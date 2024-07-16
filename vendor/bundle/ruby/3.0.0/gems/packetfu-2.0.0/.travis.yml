@@ -1,0 +1,13 @@
+language: ruby
+addons:
+  apt:
+    packages:
+      - libpcap-dev
+os:
+  - linux
+  - osx
+rvm:
+  - 2.4.1
+  - 2.4.0
+  - 2.3.4
+  - 2.2.7

@@ -1,0 +1,23 @@
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/pcaprub-0.13.2/ext/pcaprub_c
+/usr/bin/ruby -I /usr/lib/ruby/3.0.0 extconf.rb
+
+[*] Running checks for pcaprub_c code...
+platform is x86_64-linux
+checking for ruby/thread.h... yes
+checking for rb_thread_blocking_region()... no
+checking for rb_thread_call_without_gvl()... yes
+checking for pcap_open_live() in -lpcap... yes
+checking for pcap_setnonblock() in -lpcap... yes
+creating Makefile
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/pcaprub-0.13.2/ext/pcaprub_c
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-me135 sitelibdir\=./.gem.20240713-111657-me135 clean
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/pcaprub-0.13.2/ext/pcaprub_c
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-me135 sitelibdir\=./.gem.20240713-111657-me135
+compiling pcaprub.c
+linking shared-object pcaprub_c.so
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/pcaprub-0.13.2/ext/pcaprub_c
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-me135 sitelibdir\=./.gem.20240713-111657-me135 install
+/usr/bin/install -c -m 0755 pcaprub_c.so ./.gem.20240713-111657-me135

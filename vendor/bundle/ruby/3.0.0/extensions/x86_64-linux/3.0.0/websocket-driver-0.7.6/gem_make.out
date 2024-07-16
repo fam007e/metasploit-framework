@@ -1,0 +1,15 @@
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+/usr/bin/ruby -I /usr/lib/ruby/3.0.0 extconf.rb
+creating Makefile
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-dljm9q sitelibdir\=./.gem.20240713-111657-dljm9q clean
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-dljm9q sitelibdir\=./.gem.20240713-111657-dljm9q
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-dljm9q sitelibdir\=./.gem.20240713-111657-dljm9q install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20240713-111657-dljm9q

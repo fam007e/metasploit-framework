@@ -1,0 +1,20 @@
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/strptime-0.2.5/ext/strptime
+/usr/bin/ruby -I /usr/lib/ruby/3.0.0 extconf.rb
+checking for rb_timespec_now()... yes
+checking for rb_time_timespec_new()... yes
+checking for rb_time_utc_offset()... yes
+creating Makefile
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/strptime-0.2.5/ext/strptime
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-ef71vc sitelibdir\=./.gem.20240713-111657-ef71vc clean
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/strptime-0.2.5/ext/strptime
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-ef71vc sitelibdir\=./.gem.20240713-111657-ef71vc
+compiling ruby_time.c
+compiling strftime.c
+compiling strptime.c
+linking shared-object strptime/strptime.so
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/strptime-0.2.5/ext/strptime
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-ef71vc sitelibdir\=./.gem.20240713-111657-ef71vc install
+/usr/bin/install -c -m 0755 strptime.so ./.gem.20240713-111657-ef71vc/strptime

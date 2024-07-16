@@ -1,0 +1,17 @@
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/thin-1.8.2/ext/thin_parser
+/usr/bin/ruby -I /usr/lib/ruby/3.0.0 extconf.rb
+checking for main() in -lc... yes
+creating Makefile
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/thin-1.8.2/ext/thin_parser
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-wfxny8 sitelibdir\=./.gem.20240713-111657-wfxny8 clean
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/thin-1.8.2/ext/thin_parser
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-wfxny8 sitelibdir\=./.gem.20240713-111657-wfxny8
+compiling parser.c
+compiling thin.c
+linking shared-object thin_parser.so
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/thin-1.8.2/ext/thin_parser
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-wfxny8 sitelibdir\=./.gem.20240713-111657-wfxny8 install
+/usr/bin/install -c -m 0755 thin_parser.so ./.gem.20240713-111657-wfxny8

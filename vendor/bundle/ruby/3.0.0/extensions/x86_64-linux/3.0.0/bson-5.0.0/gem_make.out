@@ -1,0 +1,21 @@
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/bson-5.0.0/ext/bson
+/usr/bin/ruby -I /usr/lib/ruby/3.0.0 extconf.rb
+creating Makefile
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/bson-5.0.0/ext/bson
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-gpo98n sitelibdir\=./.gem.20240713-111657-gpo98n clean
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/bson-5.0.0/ext/bson
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-gpo98n sitelibdir\=./.gem.20240713-111657-gpo98n
+compiling bytebuf.c
+compiling endian.c
+compiling init.c
+compiling libbson-utf8.c
+compiling read.c
+compiling util.c
+compiling write.c
+linking shared-object bson_native.so
+
+current directory: /home/fam007e/Github/metasploit-framework/vendor/bundle/ruby/3.0.0/gems/bson-5.0.0/ext/bson
+make DESTDIR\= sitearchdir\=./.gem.20240713-111657-gpo98n sitelibdir\=./.gem.20240713-111657-gpo98n install
+/usr/bin/install -c -m 0755 bson_native.so ./.gem.20240713-111657-gpo98n

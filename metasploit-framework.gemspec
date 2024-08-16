@@ -76,7 +76,7 @@ Gem::Specification.new do |spec|
   # Needed for Meterpreter
   spec.add_runtime_dependency 'metasploit-payloads', '2.0.166'
   # Needed for the next-generation POSIX Meterpreter
-  spec.add_runtime_dependency 'metasploit_payloads-mettle', '1.0.30'
+  spec.add_runtime_dependency 'metasploit_payloads-mettle', '1.0.31'
   # Needed by msfgui and other rpc components
   # Locked until build env can handle newer version. See: https://github.com/msgpack/msgpack-ruby/issues/334
   spec.add_runtime_dependency 'msgpack', '~> 1.6.0'
@@ -154,7 +154,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'net-smtp'
   spec.add_runtime_dependency 'net-sftp'
   spec.add_runtime_dependency 'winrm'
-  spec.add_runtime_dependency 'ffi', '1.16.3'
+  spec.add_runtime_dependency 'ffi', '< 1.17.0'
 
   #
   # REX Libraries

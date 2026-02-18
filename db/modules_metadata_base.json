@@ -202510,6 +202510,57 @@
     "needs_cleanup": null,
     "actions": []
   },
+  "exploit_windows/persistence/registry_userinit": {
+    "name": "Windows Registry Persistence via Userinit",
+    "fullname": "exploit/windows/persistence/registry_userinit",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2015-07-01",
+    "type": "exploit",
+    "author": [
+      "joel <joel @ ndepthsecurity>",
+      "h00die"
+    ],
+    "description": "This module will install a payload that is executed during user logon.\n          It writes a payload executable to disk and modifies the Userinit registry value\n          in \"HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" to append the\n          payload path, causing it to execute when any user logs in.",
+    "references": [
+      "ATT&CK-T1112",
+      "URL-https://hadess.io/the-art-of-windows-persistence/"
+    ],
+    "platform": "Windows",
+    "arch": "x86, x64",
+    "rport": null,
+    "autofilter_ports": [],
+    "autofilter_services": [],
+    "targets": [
+      "Automatic"
+    ],
+    "mod_time": "2026-02-17 14:09:02 +0000",
+    "path": "/modules/exploits/windows/persistence/registry_userinit.rb",
+    "is_install_path": true,
+    "ref_name": "windows/persistence/registry_userinit",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Reliability": [
+        "event-dependent",
+        "repeatable-session"
+      ],
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "config-changes",
+        "ioc-in-logs"
+      ]
+    },
+    "session_types": [
+      "meterpreter",
+      "shell"
+    ],
+    "needs_cleanup": null,
+    "actions": []
+  },
   "exploit_windows/persistence/service": {
     "name": "Windows Persistent Service Installer",
     "fullname": "exploit/windows/persistence/service",

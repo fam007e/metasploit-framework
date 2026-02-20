@@ -56789,11 +56789,11 @@
       "microsoft-ds"
     ],
     "targets": null,
-    "mod_time": "2025-06-25 09:25:53 +0000",
+    "mod_time": "2026-02-20 13:12:39 +0000",
     "path": "/modules/auxiliary/scanner/smb/smb_ms17_010.rb",
     "is_install_path": true,
     "ref_name": "scanner/smb/smb_ms17_010",
-    "check": false,
+    "check": true,
     "post_auth": false,
     "default_credential": false,
     "notes": {

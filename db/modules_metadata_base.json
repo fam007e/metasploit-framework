@@ -202619,6 +202619,58 @@
     "needs_cleanup": null,
     "actions": []
   },
+  "exploit_windows/persistence/registry_active_setup": {
+    "name": "Windows Registry Active Setup Persistence",
+    "fullname": "exploit/windows/persistence/registry_active_setup",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2015-12-01",
+    "type": "exploit",
+    "author": [
+      "h00die"
+    ],
+    "description": "This module will register a payload to run via the Active Setup mechanism in Windows.\n          Active Setup is a Windows feature that runs once per user at login.\n          It triggers in a user context, losing privileges from admin to user.\n\n          Active Setup will open a popup box with \"Personalized Settings\" and the text\n          \"Setting up personalized settings for: <SETUP_NAME>\". However\n          this won't occur until the login screen has exited (but before the desktop\n          is loaded), and our execution is extremely fast so likely the user will not\n          see it.",
+    "references": [
+      "ATT&CK-T1112",
+      "ATT&CK-T1547.014",
+      "ATT&CK-T1546",
+      "URL-https://hadess.io/the-art-of-windows-persistence/"
+    ],
+    "platform": "Windows",
+    "arch": "",
+    "rport": null,
+    "autofilter_ports": [],
+    "autofilter_services": [],
+    "targets": [
+      "Automatic"
+    ],
+    "mod_time": "2026-02-20 09:51:10 +0000",
+    "path": "/modules/exploits/windows/persistence/registry_active_setup.rb",
+    "is_install_path": true,
+    "ref_name": "windows/persistence/registry_active_setup",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Reliability": [
+        "event-dependent",
+        "repeatable-session"
+      ],
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "config-changes",
+        "ioc-in-logs",
+        "screen-effects"
+      ]
+    },
+    "session_types": [
+      "meterpreter"
+    ],
+    "needs_cleanup": null,
+    "actions": []
+  },
   "exploit_windows/persistence/registry_userinit": {
     "name": "Windows Registry Persistence via Userinit",
     "fullname": "exploit/windows/persistence/registry_userinit",

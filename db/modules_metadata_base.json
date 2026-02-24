@@ -24864,7 +24864,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-06 10:38:56 +0000",
+    "mod_time": "2026-02-23 11:26:44 +0000",
     "path": "/modules/auxiliary/gather/ldap_esc_vulnerable_cert_finder.rb",
     "is_install_path": true,
     "ref_name": "gather/ldap_esc_vulnerable_cert_finder",
@@ -37217,7 +37217,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-05-27 17:13:37 +0000",
+    "mod_time": "2026-02-23 10:43:35 +0000",
     "path": "/modules/auxiliary/scanner/http/graphql_introspection_scanner.rb",
     "is_install_path": true,
     "ref_name": "scanner/http/graphql_introspection_scanner",
@@ -98021,6 +98021,55 @@
     "needs_cleanup": null,
     "actions": []
   },
+  "exploit_linux/persistence/wsl/startup_folder": {
+    "name": "Linux WSL via Startup Folder Persistence",
+    "fullname": "exploit/linux/persistence/wsl/startup_folder",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2016-08-02",
+    "type": "exploit",
+    "author": [
+      "h00die"
+    ],
+    "description": "This module establishes persistence by creating a payload in the windows startup folder from within\n          the Windows Subsystem for Linux (WSL) environment. This allows for code execution on Windows user login.\n\n          Verified on Windows 10 with Ubuntu 24.04 WSL distribution.",
+    "references": [
+      "ATT&CK-T1546",
+      "ATT&CK-T1547.001"
+    ],
+    "platform": "Windows",
+    "arch": "",
+    "rport": null,
+    "autofilter_ports": [],
+    "autofilter_services": [],
+    "targets": [
+      "Automatic"
+    ],
+    "mod_time": "2026-02-23 18:29:22 +0000",
+    "path": "/modules/exploits/linux/persistence/wsl/startup_folder.rb",
+    "is_install_path": true,
+    "ref_name": "linux/persistence/wsl/startup_folder",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "Reliability": [
+        "repeatable-session",
+        "event-dependent"
+      ],
+      "SideEffects": [
+        "artifacts-on-disk"
+      ]
+    },
+    "session_types": [
+      "meterpreter",
+      "shell"
+    ],
+    "needs_cleanup": null,
+    "actions": []
+  },
   "exploit_linux/persistence/yum_package_manager": {
     "name": "Yum Package Manager Persistence",
     "fullname": "exploit/linux/persistence/yum_package_manager",
@@ -118493,7 +118542,7 @@
       "WHD 12.7.* on Windows (Command payload)",
       "WHD 12.7.* on Linux (Command payload)"
     ],
-    "mod_time": "2026-02-05 21:38:27 +0000",
+    "mod_time": "2026-02-20 18:23:41 +0000",
     "path": "/modules/exploits/multi/http/solarwinds_webhelpdesk_rce.rb",
     "is_install_path": true,
     "ref_name": "multi/http/solarwinds_webhelpdesk_rce",

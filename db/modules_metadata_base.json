@@ -76052,6 +76052,69 @@
     "session_types": false,
     "needs_cleanup": null
   },
+  "exploit_linux/http/grandstream_gxp1600_unauth_rce": {
+    "name": "GrandStream GXP1600 Unauthenticated Remote Code Execution",
+    "fullname": "exploit/linux/http/grandstream_gxp1600_unauth_rce",
+    "aliases": [],
+    "rank": 500,
+    "disclosure_date": "2026-02-18",
+    "type": "exploit",
+    "author": [
+      "sfewer-r7"
+    ],
+    "description": "An unauthenticated stack-based buffer overflow vulnerability exists in the HTTP API endpoint\n          /cgi-bin/api.values.get. A remote attacker can leverage this vulnerability to achieve unauthenticated remote\n          code execution (RCE) with root privileges on a target device. The vulnerability affects all six device models\n          in the series: GXP1610, GXP1615, GXP1620, GXP1625, GXP1628, and GXP1630. The vulnerability affects all\n          firmware versions below version 1.0.7.81.",
+    "references": [
+      "CVE-2026-2329",
+      "URL-www.rapid7.com/blog/post/ve-cve-2026-2329-critical-unauthenticated-stack-buffer-overflow-in-grandstream-gxp1600-voip-phones-fixed",
+      "URL-https://psirt.grandstream.com/",
+      "URL-https://firmware.grandstream.com/Release_Note_GXP16xx_1.0.7.81.pdf"
+    ],
+    "platform": "Linux,Unix",
+    "arch": "cmd",
+    "rport": 80,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": [
+      "Automatic"
+    ],
+    "mod_time": "2026-02-23 13:04:42 +0000",
+    "path": "/modules/exploits/linux/http/grandstream_gxp1600_unauth_rce.rb",
+    "is_install_path": true,
+    "ref_name": "linux/http/grandstream_gxp1600_unauth_rce",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-service-restarts"
+      ],
+      "Reliability": [
+        "repeatable-session"
+      ],
+      "SideEffects": [
+        "ioc-in-logs"
+      ],
+      "RelatedModules": [
+        "post/linux/gather/grandstream_gxp1600_creds",
+        "post/linux/capture/grandstream_gxp1600_sip"
+      ]
+    },
+    "session_types": false,
+    "needs_cleanup": true
+  },
   "exploit_linux/http/grandstream_gxv31xx_settimezone_unauth_cmd_exec": {
     "name": "Grandstream GXV31XX 'settimezone' Unauthenticated Command Execution",
     "fullname": "exploit/linux/http/grandstream_gxv31xx_settimezone_unauth_cmd_exec",
@@ -135955,19 +136018,19 @@
       "OSVDB-65445",
       "URL-http://www.unrealircd.com/txt/unrealsecadvisory.20100612.txt"
     ],
-    "platform": "Unix",
+    "platform": "Linux,Unix",
     "arch": "cmd",
     "rport": 6667,
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": [
-      "Automatic Target"
+      "Linux/Unix Command"
     ],
-    "mod_time": "2025-06-23 12:43:46 +0000",
+    "mod_time": "2026-02-14 09:01:18 +0000",
     "path": "/modules/exploits/unix/irc/unreal_ircd_3281_backdoor.rb",
     "is_install_path": true,
     "ref_name": "unix/irc/unreal_ircd_3281_backdoor",
-    "check": false,
+    "check": true,
     "post_auth": false,
     "default_credential": false,
     "notes": {
@@ -273687,6 +273750,66 @@
     "needs_cleanup": null,
     "actions": []
   },
+  "post_linux/capture/grandstream_gxp1600_sip": {
+    "name": "GrandStream GXP1600 proxy SIP traffic",
+    "fullname": "post/linux/capture/grandstream_gxp1600_sip",
+    "aliases": [],
+    "rank": 300,
+    "disclosure_date": null,
+    "type": "post",
+    "author": [
+      "sfewer-r7"
+    ],
+    "description": "This capture module works against Grandstream GXP1600 series VoIP devices and can reconfigure the device to use an\n          arbitrary SIP proxy. You can first leverage the `exploit/linux/http/grandstream_gxp1600_unauth_rce` exploit\n          module to get a root session on a target GXP1600 series device before running this post module.",
+    "references": [],
+    "platform": "Linux",
+    "arch": "",
+    "rport": null,
+    "autofilter_ports": null,
+    "autofilter_services": null,
+    "targets": null,
+    "mod_time": "2026-02-23 11:30:06 +0000",
+    "path": "/modules/post/linux/capture/grandstream_gxp1600_sip.rb",
+    "is_install_path": true,
+    "ref_name": "linux/capture/grandstream_gxp1600_sip",
+    "check": false,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe",
+        "service-resource-loss"
+      ],
+      "Reliability": [],
+      "SideEffects": [
+        "config-changes",
+        "audio-effects"
+      ],
+      "RelatedModules": [
+        "exploit/linux/http/grandstream_gxp1600_unauth_rce",
+        "post/linux/gather/grandstream_gxp1600_creds"
+      ]
+    },
+    "session_types": [
+      "shell",
+      "meterpreter"
+    ],
+    "needs_cleanup": null,
+    "actions": [
+      {
+        "name": "list",
+        "description": "List all SIP accounts."
+      },
+      {
+        "name": "start",
+        "description": "Start proxying SIP account traffic."
+      },
+      {
+        "name": "stop",
+        "description": "Start proxying SIP account traffic."
+      }
+    ]
+  },
   "post_linux/dos/xen_420_dos": {
     "name": "Linux DoS Xen 4.2.0 2012-5525",
     "fullname": "post/linux/dos/xen_420_dos",
@@ -274446,6 +274569,49 @@
       "Reliability": []
     },
     "session_types": [
+      "meterpreter"
+    ],
+    "needs_cleanup": null,
+    "actions": []
+  },
+  "post_linux/gather/grandstream_gxp1600_creds": {
+    "name": "GrandStream GXP1600 Gather Credentials",
+    "fullname": "post/linux/gather/grandstream_gxp1600_creds",
+    "aliases": [],
+    "rank": 300,
+    "disclosure_date": null,
+    "type": "post",
+    "author": [
+      "sfewer-r7"
+    ],
+    "description": "This gather module works against Grandstream GXP1600 series VoIP devices and can collect HTTP, SIP, and TR-069\n          credentials from a device. You can first leverage the `exploit/linux/http/grandstream_gxp1600_unauth_rce` exploit\n          module to get a root session on a target GXP1600 series device before running this post module.",
+    "references": [],
+    "platform": "Linux",
+    "arch": "",
+    "rport": null,
+    "autofilter_ports": null,
+    "autofilter_services": null,
+    "targets": null,
+    "mod_time": "2026-02-17 22:33:46 +0000",
+    "path": "/modules/post/linux/gather/grandstream_gxp1600_creds.rb",
+    "is_install_path": true,
+    "ref_name": "linux/gather/grandstream_gxp1600_creds",
+    "check": false,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "Reliability": [],
+      "SideEffects": [],
+      "RelatedModules": [
+        "exploit/linux/http/grandstream_gxp1600_unauth_rce",
+        "post/linux/capture/grandstream_gxp1600_sip"
+      ]
+    },
+    "session_types": [
+      "shell",
       "meterpreter"
     ],
     "needs_cleanup": null,

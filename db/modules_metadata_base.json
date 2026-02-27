@@ -65999,6 +65999,37 @@
     "session_types": false,
     "needs_cleanup": false
   },
+  "evasion_linux/aarch64/rc4_packer": {
+    "name": "Linux RC4 Packer with In-Memory Execution",
+    "fullname": "evasion/linux/aarch64/rc4_packer",
+    "aliases": [],
+    "rank": 300,
+    "disclosure_date": null,
+    "type": "evasion",
+    "author": [
+      "Massimo Bertocchi"
+    ],
+    "description": "This evasion module packs Linux payloads using RC4 encryption\n          and executes them from memory using memfd_create for fileless execution.\n          Linux kernel version support: 3.17+",
+    "references": [],
+    "platform": "Linux",
+    "arch": "aarch64",
+    "rport": null,
+    "autofilter_ports": null,
+    "autofilter_services": null,
+    "targets": [
+      "Linux ARM64/AArch64"
+    ],
+    "mod_time": "2026-02-25 09:56:38 +0000",
+    "path": "/modules/evasion/linux/aarch64/rc4_packer.rb",
+    "is_install_path": true,
+    "ref_name": "linux/aarch64/rc4_packer",
+    "check": false,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {},
+    "session_types": false,
+    "needs_cleanup": false
+  },
   "evasion_windows/applocker_evasion_install_util": {
     "name": "Applocker Evasion - .NET Framework Installation Utility",
     "fullname": "evasion/windows/applocker_evasion_install_util",
@@ -70671,6 +70702,65 @@
     "session_types": false,
     "needs_cleanup": null
   },
+  "exploit_linux/http/beyondtrust_pra_rs_command_injection": {
+    "name": "BeyondTrust Privileged Remote Access (PRA) and Remote Support (RS) unauthenticated Remote Code Execution",
+    "fullname": "exploit/linux/http/beyondtrust_pra_rs_command_injection",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2026-02-06",
+    "type": "exploit",
+    "author": [
+      "Harsh Jaiswal",
+      "Jonah Burgess (CryptoCat)"
+    ],
+    "description": "This exploit achieves unauthenticated remote code execution against BeyondTrust Privileged Remote\n          Access (PRA) and Remote Support (RS). It leverages three different vulnerabilities depending on the\n          user-selected target.\n\n          The default target leverages CVE-2026-1731, a direct command injection affecting RS versions 25.3.1\n          and prior, and PRA versions 24.3.4 and prior.\n\n          Alternatively, the module can leverage a chain of CVE-2025-1094 (SQL injection in PostgreSQL)\n          and CVE-2024-12356 (argument injection), affecting RS and PRA versions 24.3.1 and prior.\n\n          Exploitation occurs with the privileges of the site user of the targeted BeyondTrust product site.",
+    "references": [
+      "CVE-2026-1731",
+      "URL-https://www.beyondtrust.com/trust-center/security-advisories/bt26-02",
+      "URL-https://attackerkb.com/topics/jNMBccstay/cve-2026-1731/rapid7-analysis"
+    ],
+    "platform": "Linux,Unix",
+    "arch": "cmd",
+    "rport": 443,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": [
+      "Command Injection"
+    ],
+    "mod_time": "2026-02-24 16:16:05 +0000",
+    "path": "/modules/exploits/linux/http/beyondtrust_pra_rs_command_injection.rb",
+    "is_install_path": true,
+    "ref_name": "linux/http/beyondtrust_pra_rs_command_injection",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "Reliability": [
+        "repeatable-session"
+      ],
+      "SideEffects": [
+        "ioc-in-logs"
+      ]
+    },
+    "session_types": false,
+    "needs_cleanup": null
+  },
   "exploit_linux/http/beyondtrust_pra_rs_unauth_rce": {
     "name": "BeyondTrust Privileged Remote Access (PRA) and Remote Support (RS) unauthenticated Remote Code Execution",
     "fullname": "exploit/linux/http/beyondtrust_pra_rs_unauth_rce",
@@ -70710,7 +70800,7 @@
     "targets": [
       "Default"
     ],
-    "mod_time": "2026-02-10 18:06:20 +0000",
+    "mod_time": "2026-02-25 13:56:13 +0000",
     "path": "/modules/exploits/linux/http/beyondtrust_pra_rs_unauth_rce.rb",
     "is_install_path": true,
     "ref_name": "linux/http/beyondtrust_pra_rs_unauth_rce",
@@ -81872,6 +81962,67 @@
     },
     "session_types": false,
     "needs_cleanup": null
+  },
+  "exploit_linux/http/ollama_rce_cve_2024_37032": {
+    "name": "Ollama Model Registry Path Traversal RCE",
+    "fullname": "exploit/linux/http/ollama_rce_cve_2024_37032",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2024-05-05",
+    "type": "exploit",
+    "author": [
+      "Sagi Tzadik <sagitz@wiz.io>",
+      "Valentin Lobstein <chocapikk@leakix.net>"
+    ],
+    "description": "Ollama before 0.1.34 is vulnerable to a path traversal attack via the\n          model pull mechanism (CVE-2024-37032). When pulling a model, the digest\n          field in OCI manifests is not validated, allowing an attacker to inject\n          path traversal sequences to write arbitrary files on the server.\n\n          This module starts a rogue OCI registry that serves two models. The first\n          pull writes a malicious shared library and /etc/ld.so.preload via path\n          traversal (a sacrificial first layer absorbs the digest verification\n          failure so the remaining files persist). The second pull registers a valid\n          model so /api/chat can spawn the llama.cpp runner process, which triggers\n          the dynamic linker to load the malicious library via ld.so.preload. The\n          library constructor forks, cleans up ld.so.preload, and executes the\n          payload in the child process.\n\n          The default Ollama Docker image runs as root with the API bound to\n          0.0.0.0:11434, making this a direct unauthenticated RCE.",
+    "references": [
+      "CVE-2024-37032",
+      "URL-https://www.wiz.io/blog/probllama-ollama-vulnerability-cve-2024-37032",
+      "GHSA-v4cg-63r8-8fh8"
+    ],
+    "platform": "Linux",
+    "arch": "x64",
+    "rport": 11434,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": [
+      "Automatic"
+    ],
+    "mod_time": "2026-02-24 23:29:52 +0000",
+    "path": "/modules/exploits/linux/http/ollama_rce_cve_2024_37032.rb",
+    "is_install_path": true,
+    "ref_name": "linux/http/ollama_rce_cve_2024_37032",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "artifacts-on-disk",
+        "ioc-in-logs",
+        "config-changes"
+      ],
+      "Reliability": [
+        "repeatable-session"
+      ]
+    },
+    "session_types": false,
+    "needs_cleanup": true
   },
   "exploit_linux/http/op5_config_exec": {
     "name": "op5 v7.1.9 Configuration Command Execution",
@@ -132488,7 +132639,7 @@
     "targets": [
       "Unix Shell"
     ],
-    "mod_time": "2025-12-17 16:12:31 +0000",
+    "mod_time": "2026-02-10 20:30:05 +0000",
     "path": "/modules/exploits/osx/misc/remote_for_mac_udp_rce.rb",
     "is_install_path": true,
     "ref_name": "osx/misc/remote_for_mac_udp_rce",

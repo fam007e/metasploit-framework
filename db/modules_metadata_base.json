@@ -20843,7 +20843,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2025-05-13 20:24:46 +0000",
+    "mod_time": "2026-02-18 15:29:09 +0000",
     "path": "/modules/auxiliary/gather/asrep.rb",
     "is_install_path": true,
     "ref_name": "gather/asrep",
@@ -24654,7 +24654,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-06 10:46:53 +0000",
+    "mod_time": "2026-02-18 15:29:09 +0000",
     "path": "/modules/auxiliary/gather/kerberoast.rb",
     "is_install_path": true,
     "ref_name": "gather/kerberoast",
@@ -53039,7 +53039,7 @@
     ],
     "description": "This module uses the getstatus or getinfo request to obtain\n          information from a Quakeserver.",
     "references": [
-      "URL-ftp://ftp.idsoftware.com/idstuff/quake3/docs/server.txt"
+      "URL-https://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake3/docs/server.txt"
     ],
     "platform": "",
     "arch": "",
@@ -53047,7 +53047,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2025-06-23 12:43:46 +0000",
+    "mod_time": "2026-03-02 14:45:14 +0000",
     "path": "/modules/auxiliary/scanner/quake/server_info.rb",
     "is_install_path": true,
     "ref_name": "scanner/quake/server_info",
@@ -76155,7 +76155,7 @@
     "description": "An unauthenticated stack-based buffer overflow vulnerability exists in the HTTP API endpoint\n          /cgi-bin/api.values.get. A remote attacker can leverage this vulnerability to achieve unauthenticated remote\n          code execution (RCE) with root privileges on a target device. The vulnerability affects all six device models\n          in the series: GXP1610, GXP1615, GXP1620, GXP1625, GXP1628, and GXP1630. The vulnerability affects all\n          firmware versions below version 1.0.7.81.",
     "references": [
       "CVE-2026-2329",
-      "URL-www.rapid7.com/blog/post/ve-cve-2026-2329-critical-unauthenticated-stack-buffer-overflow-in-grandstream-gxp1600-voip-phones-fixed",
+      "URL-https://www.rapid7.com/blog/post/ve-cve-2026-2329-critical-unauthenticated-stack-buffer-overflow-in-grandstream-gxp1600-voip-phones-fixed",
       "URL-https://psirt.grandstream.com/",
       "URL-https://firmware.grandstream.com/Release_Note_GXP16xx_1.0.7.81.pdf"
     ],
@@ -76180,7 +76180,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-23 13:04:42 +0000",
+    "mod_time": "2026-03-02 14:35:48 +0000",
     "path": "/modules/exploits/linux/http/grandstream_gxp1600_unauth_rce.rb",
     "is_install_path": true,
     "ref_name": "linux/http/grandstream_gxp1600_unauth_rce",
@@ -112223,6 +112223,186 @@
       ],
       "SideEffects": [
         "unknown-side-effects"
+      ]
+    },
+    "session_types": false,
+    "needs_cleanup": true
+  },
+  "exploit_multi/http/majordomo_cmd_injection_rce": {
+    "name": "MajorDoMo Remote Command Injection via cycle_execs Race Condition",
+    "fullname": "exploit/multi/http/majordomo_cmd_injection_rce",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2026-02-18",
+    "type": "exploit",
+    "author": [
+      "Valentin Lobstein <chocapikk@leakix.net>"
+    ],
+    "description": "This module exploits an unauthenticated command injection vulnerability in MajorDoMo's\n          remote command handler (rc/index.php). The param parameter is interpolated into double\n          quotes without escapeshellarg(), and the resulting string is passed to safe_exec() which\n          inserts it into the safe_execs database table with no sanitization.\n\n          The cycle_execs.php worker script is web-accessible without authentication. On startup it\n          purges the safe_execs queue, then enters an infinite loop polling the table every second\n          and passing each command to exec(). A race condition is required: the worker must be\n          started first (which purges existing entries), then the injection is performed while the\n          worker is polling. The next iteration picks up and executes the attacker's payload.\n\n          The command parameter must reference a valid .bat file in rc/commands/. The default\n          MajorDoMo installation ships with shutdown.bat, displayon.bat, and displayoff.bat.\n\n          All versions of MajorDoMo up to and including the latest release are affected.\n          The fix is tracked in PR sergejey/majordomo#1177.",
+    "references": [
+      "CVE-2026-27175",
+      "URL-https://chocapikk.com/posts/2026/majordomo-revisited/",
+      "URL-https://github.com/sergejey/majordomo/pull/1177"
+    ],
+    "platform": "Linux,Unix,Windows",
+    "arch": "cmd",
+    "rport": 80,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": [
+      "Unix/Linux Command Shell",
+      "Windows Command Shell"
+    ],
+    "mod_time": "2026-02-27 14:42:00 +0000",
+    "path": "/modules/exploits/multi/http/majordomo_cmd_injection_rce.rb",
+    "is_install_path": true,
+    "ref_name": "multi/http/majordomo_cmd_injection_rce",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "Reliability": [
+        "repeatable-session"
+      ],
+      "SideEffects": [
+        "ioc-in-logs"
+      ]
+    },
+    "session_types": false,
+    "needs_cleanup": true
+  },
+  "exploit_multi/http/majordomo_console_eval_rce": {
+    "name": "MajorDoMo Console Eval Unauthenticated RCE",
+    "fullname": "exploit/multi/http/majordomo_console_eval_rce",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2026-02-18",
+    "type": "exploit",
+    "author": [
+      "Valentin Lobstein <chocapikk@leakix.net>"
+    ],
+    "description": "This module exploits an unauthenticated remote code execution vulnerability in\n          MajorDoMo, an open-source home automation platform. The admin panel's PHP console\n          is accessible without authentication due to a missing exit after redirect in\n          modules/panel.class.php. The redirect(\"/\") call intended to block unauthenticated\n          users lacks an exit statement, so execution continues into the ajax panel handler\n          which includes inc_panel_ajax.php unconditionally. Inside, the console handler\n          passes the user-supplied command parameter directly to eval() via the evalConsole()\n          function. The command, ajax_panel, and op parameters are all controllable via GET\n          request through MajorDoMo's register_globals-style gr() function.\n\n          This results in unauthenticated PHP code evaluation via a single GET request\n          to /admin.php.\n\n          All versions of MajorDoMo up to and including the latest release are affected.\n          The fix is tracked in PR sergejey/majordomo#1177.",
+    "references": [
+      "CVE-2026-27174",
+      "URL-https://chocapikk.com/posts/2026/majordomo-revisited/",
+      "URL-https://github.com/sergejey/majordomo/pull/1177"
+    ],
+    "platform": "Linux,PHP,Unix,Windows",
+    "arch": "php, cmd",
+    "rport": 80,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": [
+      "PHP In-Memory",
+      "Unix/Linux Command Shell",
+      "Windows Command Shell"
+    ],
+    "mod_time": "2026-02-21 08:34:31 +0000",
+    "path": "/modules/exploits/multi/http/majordomo_console_eval_rce.rb",
+    "is_install_path": true,
+    "ref_name": "multi/http/majordomo_console_eval_rce",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "Reliability": [
+        "repeatable-session"
+      ],
+      "SideEffects": [
+        "ioc-in-logs"
+      ]
+    },
+    "session_types": false,
+    "needs_cleanup": null
+  },
+  "exploit_multi/http/majordomo_supply_chain_rce": {
+    "name": "MajorDoMo Supply Chain RCE via Update Poisoning",
+    "fullname": "exploit/multi/http/majordomo_supply_chain_rce",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2026-02-18",
+    "type": "exploit",
+    "author": [
+      "Valentin Lobstein <chocapikk@leakix.net>"
+    ],
+    "description": "This module exploits an unauthenticated remote code execution vulnerability in\n          MajorDoMo's saverestore module via supply chain poisoning. The saverestore module's\n          admin() method is reachable without authentication through the /objects/?module=saverestore\n          endpoint because usual() calls admin() directly and uses gr() (which reads from $_REQUEST)\n          instead of $this->mode for mode checks.\n\n          Two unauthenticated GET requests chain together for full RCE:\n          1. auto_update_settings - poisons the MASTER_UPDATE_URL to point to an attacker-controlled server\n          2. force_update - triggers autoUpdateSystem() which fetches an Atom feed and tarball from the\n          poisoned URL, extracts the tarball, and copies all files to the webroot via copyTree()\n\n          The tarball is downloaded via curl with CURLOPT_SSL_VERIFYPEER set to FALSE and no integrity\n          check. The attacker serves a fake Atom feed with an entry older than the configured delay\n          (default 1 day) and a tarball containing a PHP webshell. After deployment, the module\n          executes the payload through the webshell.\n\n          All versions of MajorDoMo up to and including the latest release are affected.\n          The fix is tracked in PR sergejey/majordomo#1177.",
+    "references": [
+      "CVE-2026-27180",
+      "URL-https://chocapikk.com/posts/2026/majordomo-revisited/",
+      "URL-https://github.com/sergejey/majordomo/pull/1177"
+    ],
+    "platform": "Linux,PHP,Unix,Windows",
+    "arch": "php, cmd",
+    "rport": 80,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": [
+      "PHP In-Memory",
+      "Unix/Linux Command Shell",
+      "Windows Command Shell"
+    ],
+    "mod_time": "2026-02-27 14:42:00 +0000",
+    "path": "/modules/exploits/multi/http/majordomo_supply_chain_rce.rb",
+    "is_install_path": true,
+    "ref_name": "multi/http/majordomo_supply_chain_rce",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "Reliability": [
+        "repeatable-session"
+      ],
+      "SideEffects": [
+        "ioc-in-logs",
+        "artifacts-on-disk"
       ]
     },
     "session_types": false,
@@ -153643,8 +153823,8 @@
       "CVE-2012-1533",
       "OSVDB-86348",
       "BID-56046",
-      "URL-http://www.oracle.com/technetwork/topics/security/javacpuoct2012-1515924.html",
-      "URL-http://pastebin.com/eUucVage "
+      "URL-https://www.oracle.com/security-alerts/javacpuoct2012.html",
+      "URL-https://pastebin.com/eUucVage"
     ],
     "platform": "Windows",
     "arch": "x86",
@@ -153655,7 +153835,7 @@
       "Automatic",
       "Java Runtime 1.6.31 to 1.6.35 and 1.7.03 to 1.7.07 on Windows x86"
     ],
-    "mod_time": "2025-06-23 12:43:46 +0000",
+    "mod_time": "2026-03-02 14:45:14 +0000",
     "path": "/modules/exploits/windows/browser/java_ws_double_quote.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/java_ws_double_quote",
@@ -164521,7 +164701,7 @@
       "ZDI-18-332",
       "ZDI-18-342",
       "URL-https://srcincite.io/blog/2018/06/22/foxes-among-us-foxit-reader-vulnerability-discovery-and-exploitation.html",
-      "URL-https://srcincite.io/pocs/cve-2018-99{48,58}.pdf.txt"
+      "URL-https://srcincite.io/pocs/cve-2018-99%7B48,58%7D.pdf.txt"
     ],
     "platform": "Windows",
     "arch": "",
@@ -164531,7 +164711,7 @@
     "targets": [
       "Windows 10 Pro x64 Build 17134"
     ],
-    "mod_time": "2025-06-23 12:43:46 +0000",
+    "mod_time": "2026-03-02 14:45:14 +0000",
     "path": "/modules/exploits/windows/fileformat/foxit_reader_uaf.rb",
     "is_install_path": true,
     "ref_name": "windows/fileformat/foxit_reader_uaf",
@@ -167511,7 +167691,7 @@
       "URL-https://www.mdsec.co.uk/2017/04/exploiting-cve-2017-0199-hta-handler-vulnerability/",
       "URL-https://www.microsoft.com/en-us/download/details.aspx?id=10725",
       "URL-https://msdn.microsoft.com/en-us/library/dd942294.aspx",
-      "URL-https://winprotocoldoc.blob.core.windows.net/productionwindowsarchives/MS-CFB/[MS-CFB].pdf",
+      "URL-https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-cfb/53989ce4-7b05-4f8d-829b-d08d6148375b",
       "URL-https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-0199"
     ],
     "platform": "Windows",
@@ -167522,7 +167702,7 @@
     "targets": [
       "Microsoft Office Word"
     ],
-    "mod_time": "2025-06-23 12:43:46 +0000",
+    "mod_time": "2026-03-02 14:45:14 +0000",
     "path": "/modules/exploits/windows/fileformat/office_word_hta.rb",
     "is_install_path": true,
     "ref_name": "windows/fileformat/office_word_hta",
@@ -170002,7 +170182,7 @@
       "CVE-2021-40444",
       "URL-https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-40444",
       "URL-https://www.sentinelone.com/blog/peeking-into-cve-2021-40444-ms-office-zero-day-vulnerability-exploited-in-the-wild/",
-      "URL-http://download.microsoft.com/download/4/d/a/4da14f27-b4ef-4170-a6e6-5b1ef85b1baa/[ms-cab].pdf",
+      "URL-https://download.microsoft.com/download/4/d/a/4da14f27-b4ef-4170-a6e6-5b1ef85b1baa/%5Bms-cab%5D.pdf",
       "URL-https://github.com/lockedbyte/CVE-2021-40444/blob/master/REPRODUCE.md",
       "URL-https://github.com/klezVirus/CVE-2021-40444"
     ],
@@ -170014,7 +170194,7 @@
     "targets": [
       "Hosted"
     ],
-    "mod_time": "2024-05-28 14:01:31 +0000",
+    "mod_time": "2026-03-02 14:45:14 +0000",
     "path": "/modules/exploits/windows/fileformat/word_mshtml_rce.rb",
     "is_install_path": true,
     "ref_name": "windows/fileformat/word_mshtml_rce",
@@ -280882,7 +281062,7 @@
     ],
     "description": "This module enumerates ways to decrypt Bitlocker volume and if a recovery key is stored locally\n          or can be generated, dump the Bitlocker master key (FVEK)",
     "references": [
-      "URL-https://github.com/libyal/libbde/blob/master/documentation/BitLocker Drive Encryption (BDE) format.asciidoc",
+      "URL-https://github.com/libyal/libbde/blob/master/documentation/BitLocker%20Drive%20Encryption%20%28BDE%29%20format.asciidoc",
       "URL-https://web.archive.org/web/20170914195545/http://www.hsc.fr/ressources/outils/dislocker/"
     ],
     "platform": "Windows",
@@ -280891,7 +281071,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2025-05-03 12:57:40 +0000",
+    "mod_time": "2026-03-02 14:35:48 +0000",
     "path": "/modules/post/windows/gather/bitlocker_fvek.rb",
     "is_install_path": true,
     "ref_name": "windows/gather/bitlocker_fvek",

@@ -64576,7 +64576,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2025-04-14 00:10:31 +0000",
+    "mod_time": "2026-01-09 05:51:46 +0000",
     "path": "/modules/encoders/cmd/base64.rb",
     "is_install_path": true,
     "ref_name": "cmd/base64",
@@ -66023,6 +66023,37 @@
     "path": "/modules/evasion/linux/aarch64/rc4_packer.rb",
     "is_install_path": true,
     "ref_name": "linux/aarch64/rc4_packer",
+    "check": false,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {},
+    "session_types": false,
+    "needs_cleanup": false
+  },
+  "evasion_linux/x86/rc4_packer": {
+    "name": "Linux RC4 Packer with In-Memory Execution (x86)",
+    "fullname": "evasion/linux/x86/rc4_packer",
+    "aliases": [],
+    "rank": 300,
+    "disclosure_date": null,
+    "type": "evasion",
+    "author": [
+      "Massimo Bertocchi"
+    ],
+    "description": "This evasion module packs Linux payloads using RC4 encryption\n          and executes them from memory using memfd_create for fileless execution.\n\n          The evasion module works on systems with Linux Kernel 3.17+ due to memfd_create support.\n\n          Features:\n          - RC4 encryption with configurable key size\n          - Fileless execution via memfd_create",
+    "references": [],
+    "platform": "Linux",
+    "arch": "x86",
+    "rport": null,
+    "autofilter_ports": null,
+    "autofilter_services": null,
+    "targets": [
+      "Linux x86"
+    ],
+    "mod_time": "2026-02-27 17:04:03 +0000",
+    "path": "/modules/evasion/linux/x86/rc4_packer.rb",
+    "is_install_path": true,
+    "ref_name": "linux/x86/rc4_packer",
     "check": false,
     "post_auth": false,
     "default_credential": false,
@@ -143839,7 +143870,7 @@
     "needs_cleanup": null
   },
   "exploit_unix/webapp/twiki_history": {
-    "name": "TWiki History TWikiUsers rev Parameter Command Execution",
+    "name": "TWiki History Function Arbitrary Command Execution",
     "fullname": "exploit/unix/webapp/twiki_history",
     "aliases": [],
     "rank": 600,
@@ -143849,14 +143880,14 @@
       "B4dP4nd4",
       "jduck <jduck@metasploit.com>"
     ],
-    "description": "This module exploits a vulnerability in the history component of TWiki.\n          By passing a 'rev' parameter containing shell metacharacters to the TWikiUsers\n          script, an attacker can execute arbitrary OS commands.",
+    "description": "This module exploits a vulnerability in the history component of TWiki.\n          By passing a 'rev' parameter containing shell metacharacters,\n          an attacker can execute arbitrary OS commands.\n\n          Affected versions:\n          - 20040902\n          - 20040901\n          - 20030201\n          - 20011201\n          - 20001201",
     "references": [
       "CVE-2005-2877",
       "OSVDB-19403",
       "BID-14834",
-      "URL-http://web.archive.org/web/20230609051423/https://twiki.org/cgi-bin/view/Codev/SecurityAlertExecuteCommandsWithRev"
+      "URL-https://twiki.org/cgi-bin/view/Codev/SecurityAlertExecuteCommandsWithRev"
     ],
-    "platform": "Unix",
+    "platform": "Linux,Unix",
     "arch": "cmd",
     "rport": 80,
     "autofilter_ports": [
@@ -143877,7 +143908,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2025-06-23 12:43:46 +0000",
+    "mod_time": "2026-02-25 10:15:41 +0000",
     "path": "/modules/exploits/unix/webapp/twiki_history.rb",
     "is_install_path": true,
     "ref_name": "unix/webapp/twiki_history",
@@ -143968,14 +143999,14 @@
     "author": [
       "jduck <jduck@metasploit.com>"
     ],
-    "description": "This module exploits a vulnerability in the search component of TWiki.\n          By passing a 'search' parameter containing shell metacharacters to the\n          'WebSearch' script, an attacker can execute arbitrary OS commands.",
+    "description": "This module exploits a vulnerability in the search component of TWiki.\n          By passing a 'search' parameter containing shell metacharacters to a\n          'Search' script, an attacker can execute arbitrary OS commands.\n\n          Affected versions:\n          - 20040901\n          - 20030201\n          - 20011201\n          - 20001201\n          - SVN up to and including revision 3224",
     "references": [
       "CVE-2004-1037",
       "OSVDB-11714",
       "BID-11674",
-      "URL-http://web.archive.org/web/20221006175642/https://twiki.org/cgi-bin/view/Codev/SecurityAlertExecuteCommandsWithSearch"
+      "URL-https://twiki.org/cgi-bin/view/Codev/SecurityAlertExecuteCommandsWithSearch"
     ],
-    "platform": "Unix",
+    "platform": "Linux,Unix",
     "arch": "cmd",
     "rport": 80,
     "autofilter_ports": [
@@ -143996,7 +144027,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2025-06-23 12:43:46 +0000",
+    "mod_time": "2026-02-25 10:24:36 +0000",
     "path": "/modules/exploits/unix/webapp/twiki_search.rb",
     "is_install_path": true,
     "ref_name": "unix/webapp/twiki_search",

@@ -81,7 +81,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/admin/android/google_play_store_uxss_xframe_rce.rb",
     "is_install_path": true,
     "ref_name": "admin/android/google_play_store_uxss_xframe_rce",
@@ -10157,7 +10157,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/admin/sap/cve_2020_6207_solman_rce.rb",
     "is_install_path": true,
     "ref_name": "admin/sap/cve_2020_6207_solman_rce",
@@ -19115,7 +19115,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/fileformat/specialfolder_leak.rb",
     "is_install_path": true,
     "ref_name": "fileformat/specialfolder_leak",
@@ -20523,7 +20523,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-26 11:41:43 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/gather/android_stock_browser_uxss.rb",
     "is_install_path": true,
     "ref_name": "gather/android_stock_browser_uxss",
@@ -20695,7 +20695,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/gather/apple_safari_ftp_url_cookie_theft.rb",
     "is_install_path": true,
     "ref_name": "gather/apple_safari_ftp_url_cookie_theft",
@@ -20742,7 +20742,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-26 11:41:43 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/gather/apple_safari_webarchive_uxss.rb",
     "is_install_path": true,
     "ref_name": "gather/apple_safari_webarchive_uxss",
@@ -22847,7 +22847,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/gather/firefox_pdfjs_file_theft.rb",
     "is_install_path": true,
     "ref_name": "gather/firefox_pdfjs_file_theft",
@@ -23973,7 +23973,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-03-02 11:06:06 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/gather/ie_sandbox_findfiles.rb",
     "is_install_path": true,
     "ref_name": "gather/ie_sandbox_findfiles",
@@ -25124,6 +25124,86 @@
       }
     ]
   },
+  "auxiliary_gather/leakix_search": {
+    "name": "LeakIX Search",
+    "fullname": "auxiliary/gather/leakix_search",
+    "aliases": [],
+    "rank": 300,
+    "disclosure_date": null,
+    "type": "auxiliary",
+    "author": [
+      "Valentin Lobstein <chocapikk@leakix.net>",
+      "LeakIX <support@leakix.net>"
+    ],
+    "description": "This module uses the LeakIX API to search for exposed services and data leaks.\n          LeakIX is a search engine focused on indexing internet-exposed services and\n          leaked credentials/databases.\n\n          An API key is required (free at https://leakix.net).\n\n          Actions:\n          SEARCH     - Query LeakIX with a search string and scope (leak or service).\n          Paginated, 20 results per page, max 500 pages (10000 results).\n          Free accounts have lower page limits.\n          HOST       - Retrieve all known services and leaks for a given IP\n          DOMAIN     - Retrieve all known services and leaks for a given domain\n          SUBDOMAINS - List known subdomains for a given domain\n          PLUGINS    - List all available LeakIX scanner plugins\n          BULK       - Stream all leak results via the bulk API (Pro only, leak scope only).\n          Use MAXRESULTS to limit the number of collected events.\n\n          Query examples:\n          +country:\"France\"\n          +port:3306 +country:\"Germany\"\n          plugin:HttpOpenProxy\n          +software.name:\"nginx\" +country:\"US\"",
+    "references": [
+      "URL-https://leakix.net",
+      "URL-https://docs.leakix.net"
+    ],
+    "platform": "",
+    "arch": "",
+    "rport": null,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": null,
+    "mod_time": "2026-03-04 17:13:03 +0000",
+    "path": "/modules/auxiliary/gather/leakix_search.rb",
+    "is_install_path": true,
+    "ref_name": "gather/leakix_search",
+    "check": false,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "ioc-in-logs"
+      ],
+      "Reliability": []
+    },
+    "session_types": false,
+    "needs_cleanup": false,
+    "actions": [
+      {
+        "name": "BULK",
+        "description": "Bulk search via streaming API (Pro only, leak scope only)"
+      },
+      {
+        "name": "DOMAIN",
+        "description": "Get details for a specific domain"
+      },
+      {
+        "name": "HOST",
+        "description": "Get details for a specific IP address"
+      },
+      {
+        "name": "PLUGINS",
+        "description": "List available LeakIX plugins"
+      },
+      {
+        "name": "SEARCH",
+        "description": "Search LeakIX for services or leaks"
+      },
+      {
+        "name": "SUBDOMAINS",
+        "description": "List subdomains for a domain"
+      }
+    ]
+  },
   "auxiliary_gather/listmonk_env_disclosure": {
     "name": "Listmonk Insecure Sprig Template Functions Environment Disclosure",
     "fullname": "auxiliary/gather/listmonk_env_disclosure",
@@ -25213,7 +25293,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/gather/magento_xxe_cve_2024_34102.rb",
     "is_install_path": true,
     "ref_name": "gather/magento_xxe_cve_2024_34102",
@@ -27347,7 +27427,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-26 17:17:19 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/gather/safari_file_url_navigation.rb",
     "is_install_path": true,
     "ref_name": "gather/safari_file_url_navigation",
@@ -60618,7 +60698,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/android_mercury_parseuri.rb",
     "is_install_path": true,
     "ref_name": "server/android_mercury_parseuri",
@@ -60658,7 +60738,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/browser_autopwn.rb",
     "is_install_path": true,
     "ref_name": "server/browser_autopwn",
@@ -60842,7 +60922,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/capture/http.rb",
     "is_install_path": true,
     "ref_name": "server/capture/http",
@@ -60883,7 +60963,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/capture/http_basic.rb",
     "is_install_path": true,
     "ref_name": "server/capture/http_basic",
@@ -61160,7 +61240,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/capture/pop3.rb",
     "is_install_path": true,
     "ref_name": "server/capture/pop3",
@@ -61246,7 +61326,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/capture/printjob_capture.rb",
     "is_install_path": true,
     "ref_name": "server/capture/printjob_capture",
@@ -61287,7 +61367,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/capture/sip.rb",
     "is_install_path": true,
     "ref_name": "server/capture/sip",
@@ -61378,7 +61458,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/capture/smtp.rb",
     "is_install_path": true,
     "ref_name": "server/capture/smtp",
@@ -61633,7 +61713,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/dns/spoofhelper.rb",
     "is_install_path": true,
     "ref_name": "server/dns/spoofhelper",
@@ -61676,7 +61756,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/fakedns.rb",
     "is_install_path": true,
     "ref_name": "server/fakedns",
@@ -61845,7 +61925,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/jsse_skiptls_mitm_proxy.rb",
     "is_install_path": true,
     "ref_name": "server/jsse_skiptls_mitm_proxy",
@@ -62019,7 +62099,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/netbios_spoof_nat.rb",
     "is_install_path": true,
     "ref_name": "server/netbios_spoof_nat",
@@ -62060,7 +62140,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/openssl_altchainsforgery_mitm_proxy.rb",
     "is_install_path": true,
     "ref_name": "server/openssl_altchainsforgery_mitm_proxy",
@@ -62104,7 +62184,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/openssl_heartbeat_client_memory.rb",
     "is_install_path": true,
     "ref_name": "server/openssl_heartbeat_client_memory",
@@ -62542,7 +62622,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/auxiliary/server/tftp.rb",
     "is_install_path": true,
     "ref_name": "server/tftp",
@@ -64576,7 +64656,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-01-09 05:51:46 +0000",
+    "mod_time": "2026-03-10 19:03:51 +0000",
     "path": "/modules/encoders/cmd/base64.rb",
     "is_install_path": true,
     "ref_name": "cmd/base64",
@@ -66023,6 +66103,37 @@
     "path": "/modules/evasion/linux/aarch64/rc4_packer.rb",
     "is_install_path": true,
     "ref_name": "linux/aarch64/rc4_packer",
+    "check": false,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {},
+    "session_types": false,
+    "needs_cleanup": false
+  },
+  "evasion_linux/x64/rc4_packer": {
+    "name": "Linux RC4 Encrypted Payload Generator",
+    "fullname": "evasion/linux/x64/rc4_packer",
+    "aliases": [],
+    "rank": 300,
+    "disclosure_date": null,
+    "type": "evasion",
+    "author": [
+      "Massimo Bertocchi"
+    ],
+    "description": "This evasion module packs Linux payloads using RC4 encryption\n          and executes them from memory using memfd_create for fileless execution.\n          Linux kernel version support: 3.17+",
+    "references": [],
+    "platform": "Linux",
+    "arch": "x64",
+    "rport": null,
+    "autofilter_ports": null,
+    "autofilter_services": null,
+    "targets": [
+      "Linux x64"
+    ],
+    "mod_time": "2026-02-27 16:02:35 +0000",
+    "path": "/modules/evasion/linux/x64/rc4_packer.rb",
+    "is_install_path": true,
+    "ref_name": "linux/x64/rc4_packer",
     "check": false,
     "post_auth": false,
     "default_credential": false,
@@ -68230,7 +68341,7 @@
     "targets": [
       "NetScaler Virtual Appliance 450010"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/freebsd/misc/citrix_netscaler_soap_bof.rb",
     "is_install_path": true,
     "ref_name": "freebsd/misc/citrix_netscaler_soap_bof",
@@ -71545,7 +71656,7 @@
     "targets": [
       "Automatic Target"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/chaos_rat_xss_to_rce.rb",
     "is_install_path": true,
     "ref_name": "linux/http/chaos_rat_xss_to_rce",
@@ -72409,7 +72520,7 @@
     "targets": [
       "Unix/Linux Command Shell"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/craftcms_ftp_template.rb",
     "is_install_path": true,
     "ref_name": "linux/http/craftcms_ftp_template",
@@ -73149,7 +73260,7 @@
       "CMD",
       "Linux mipsel Payload"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/dlink_diagnostic_exec_noauth.rb",
     "is_install_path": true,
     "ref_name": "linux/http/dlink_diagnostic_exec_noauth",
@@ -73331,7 +73442,7 @@
       "CMD",
       "Linux mipsel Payload"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/dlink_dir615_up_exec.rb",
     "is_install_path": true,
     "ref_name": "linux/http/dlink_dir615_up_exec",
@@ -73877,7 +73988,7 @@
       "Dlink DIR-818 / 822 / 823 / 850 [MIPS]",
       "Dlink DIR-868 (rev. B and C) / 880 / 885 / 890 / 895 [ARM]"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/dlink_hnap_login_bof.rb",
     "is_install_path": true,
     "ref_name": "linux/http/dlink_hnap_login_bof",
@@ -76877,7 +76988,7 @@
     "targets": [
       "Linux mipsbe Payload"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/huawei_hg532n_cmdinject.rb",
     "is_install_path": true,
     "ref_name": "linux/http/huawei_hg532n_cmdinject",
@@ -77001,7 +77112,7 @@
     "targets": [
       "IBM QRadar SIEM <= 7.3.1 Patch 2 / 7.2.8 Patch 11"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/ibm_qradar_unauth_rce.rb",
     "is_install_path": true,
     "ref_name": "linux/http/ibm_qradar_unauth_rce",
@@ -79048,7 +79159,7 @@
       "CMD",
       "Linux mipsel Payload"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/linksys_e1500_apply_exec.rb",
     "is_install_path": true,
     "ref_name": "linux/http/linksys_e1500_apply_exec",
@@ -79300,7 +79411,7 @@
       "CMD",
       "Linux mipsel Payload"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/linksys_wrt54gl_apply_exec.rb",
     "is_install_path": true,
     "ref_name": "linux/http/linksys_wrt54gl_apply_exec",
@@ -79606,7 +79717,7 @@
     "targets": [
       "Unix Command"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/magento_xxe_to_glibc_buf_overflow.rb",
     "is_install_path": true,
     "ref_name": "linux/http/magento_xxe_to_glibc_buf_overflow",
@@ -81198,7 +81309,7 @@
       "CMD",
       "Linux mipsbe Payload"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/netgear_dgn1000b_setup_exec.rb",
     "is_install_path": true,
     "ref_name": "linux/http/netgear_dgn1000b_setup_exec",
@@ -81260,7 +81371,7 @@
       "CMD",
       "Linux mipsbe Payload"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/netgear_dgn2200b_pppoe_exec.rb",
     "is_install_path": true,
     "ref_name": "linux/http/netgear_dgn2200b_pppoe_exec",
@@ -82032,7 +82143,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/ollama_rce_cve_2024_37032.rb",
     "is_install_path": true,
     "ref_name": "linux/http/ollama_rce_cve_2024_37032",
@@ -84632,7 +84743,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/railo_cfml_rfi.rb",
     "is_install_path": true,
     "ref_name": "linux/http/railo_cfml_rfi",
@@ -86750,7 +86861,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/symmetricom_syncserver_rce.rb",
     "is_install_path": true,
     "ref_name": "linux/http/symmetricom_syncserver_rce",
@@ -86869,7 +86980,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/synology_dsm_smart_exec_auth.rb",
     "is_install_path": true,
     "ref_name": "linux/http/synology_dsm_smart_exec_auth",
@@ -88660,7 +88771,7 @@
     "targets": [
       "VMware vRealize Log Insight < v8.10.2"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/http/vmware_vrli_rce.rb",
     "is_install_path": true,
     "ref_name": "linux/http/vmware_vrli_rce",
@@ -95701,7 +95812,7 @@
       "Anydesk 5.5.2 Ubuntu 20.04 x64",
       "Anydesk 5.5.2 Ubuntu 18.04 x64"
     ],
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/misc/cve_2020_13160_anydesk.rb",
     "is_install_path": true,
     "ref_name": "linux/misc/cve_2020_13160_anydesk",
@@ -96536,7 +96647,7 @@
     "targets": [
       "Jenkins 2.31"
     ],
-    "mod_time": "2026-02-24 12:18:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/misc/jenkins_ldap_deserialize.rb",
     "is_install_path": true,
     "ref_name": "linux/misc/jenkins_ldap_deserialize",
@@ -96921,7 +97032,7 @@
       "OpenNMS / Linux x86",
       "OpenNMS / Linux x86_64"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/misc/opennms_java_serialize.rb",
     "is_install_path": true,
     "ref_name": "linux/misc/opennms_java_serialize",
@@ -97192,7 +97303,7 @@
     "targets": [
       "TP-Link Archer A7/C7 (AC1750) v5 (firmware up to 201029/30)"
     ],
-    "mod_time": "2026-02-26 17:48:23 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/misc/tplink_archer_a7_c7_lan_rce.rb",
     "is_install_path": true,
     "ref_name": "linux/misc/tplink_archer_a7_c7_lan_rce",
@@ -97480,7 +97591,7 @@
     "targets": [
       "Zyxel Device"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/misc/zyxel_multiple_devices_zhttp_lan_rce.rb",
     "is_install_path": true,
     "ref_name": "linux/misc/zyxel_multiple_devices_zhttp_lan_rce",
@@ -98700,7 +98811,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/redis/redis_replication_cmd_exec.rb",
     "is_install_path": true,
     "ref_name": "linux/redis/redis_replication_cmd_exec",
@@ -99108,7 +99219,7 @@
     "targets": [
       "Linux x86"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/linux/smtp/exim4_dovecot_exec.rb",
     "is_install_path": true,
     "ref_name": "linux/smtp/exim4_dovecot_exec",
@@ -104329,7 +104440,7 @@
       "Unix Command",
       "Linux Dropper"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/adobe_coldfusion_rce_cve_2023_26360.rb",
     "is_install_path": true,
     "ref_name": "multi/http/adobe_coldfusion_rce_cve_2023_26360",
@@ -106228,7 +106339,7 @@
     "targets": [
       "Bassmaster <= 1.5.1"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/bassmaster_js_injection.rb",
     "is_install_path": true,
     "ref_name": "multi/http/bassmaster_js_injection",
@@ -106442,7 +106553,7 @@
     "description": "This module exploits an authenticated remote code execution vulnerability in Cacti versions prior to 1.2.29.\n          Authenticated users can upload a graph template through the /graph_templates.php endpoint. The right_axis_label\n          parameter is vulnerable to code injection, allowing attackers to execute arbitrary commands on the server.\n          The payload is length limited, due to this constraint the module starts an HTTP server and hosts the payload.\n          The initial payload downloads the full payload using curl from the attacker's server and saves it to the\n          web root of the cacti server before executing.",
     "references": [
       "URL-https://github.com/SoftAndoWetto/CVE-2025-24367-PoC-Cacti/blob/main/exploit.py",
-      "GHSA-fxrq-fr7h-9rqq",
+      "URL-https://github.com/Cacti/cacti/security/advisories/GHSA-fxrq-fr7h-9rqq",
       "CVE-2025-24367"
     ],
     "platform": "Linux,PHP,Unix,Windows",
@@ -106467,7 +106578,7 @@
       "Linux",
       "Windows"
     ],
-    "mod_time": "2026-02-26 17:48:23 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/cacti_graph_template_rce.rb",
     "is_install_path": true,
     "ref_name": "multi/http/cacti_graph_template_rce",
@@ -111061,7 +111172,7 @@
       "Linux Universal",
       "Java Universal"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/jboss_maindeployer.rb",
     "is_install_path": true,
     "ref_name": "multi/http/jboss_maindeployer",
@@ -112106,7 +112217,7 @@
       "Windows",
       "Linux"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/log4shell_header_injection.rb",
     "is_install_path": true,
     "ref_name": "multi/http/log4shell_header_injection",
@@ -113759,7 +113870,7 @@
       "Unix/Linux Command Shell",
       "Windows Command Shell"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/monsta_ftp_downloadfile_rce.rb",
     "is_install_path": true,
     "ref_name": "multi/http/monsta_ftp_downloadfile_rce",
@@ -114186,7 +114297,7 @@
       "Unix CMD",
       "Linux Payload"
     ],
-    "mod_time": "2026-02-26 17:17:19 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/mutiny_subnetmask_exec.rb",
     "is_install_path": true,
     "ref_name": "multi/http/mutiny_subnetmask_exec",
@@ -115516,7 +115627,7 @@
       "Linux/Unix (Interactive Shell)",
       "Windows (Interactive Shell)"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/oracle_ebs_cve_2025_61882_exploit_rce.rb",
     "is_install_path": true,
     "ref_name": "multi/http/oracle_ebs_cve_2025_61882_exploit_rce",
@@ -118004,7 +118115,7 @@
     "targets": [
       "Ruby on Rails 4.0.8 July 2, 2014"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/rails_dynamic_render_code_exec.rb",
     "is_install_path": true,
     "ref_name": "multi/http/rails_dynamic_render_code_exec",
@@ -119028,7 +119139,7 @@
       "WHD 12.7.* on Windows (Command payload)",
       "WHD 12.7.* on Linux (Command payload)"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/solarwinds_webhelpdesk_rce.rb",
     "is_install_path": true,
     "ref_name": "multi/http/solarwinds_webhelpdesk_rce",
@@ -119546,6 +119657,67 @@
     "path": "/modules/exploits/multi/http/spip_rce_form.rb",
     "is_install_path": true,
     "ref_name": "multi/http/spip_rce_form",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "Reliability": [
+        "repeatable-session"
+      ],
+      "SideEffects": [
+        "ioc-in-logs"
+      ]
+    },
+    "session_types": false,
+    "needs_cleanup": null
+  },
+  "exploit_multi/http/spip_saisies_rce": {
+    "name": "SPIP Saisies Plugin Unauthenticated RCE",
+    "fullname": "exploit/multi/http/spip_saisies_rce",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2025-02-19",
+    "type": "exploit",
+    "author": [
+      "OpenStudio",
+      "Valentin Lobstein <chocapikk@leakix.net>"
+    ],
+    "description": "This module exploits an unauthenticated PHP code injection in the SPIP\n          Saisies plugin (CVE-2025-71243). The _anciennes_valeurs form parameter is\n          interpolated unsanitized into a hidden field rendered with\n          interdire_scripts=false, allowing direct PHP code execution via template\n          eval.\n\n          Exploitation requires a publicly accessible page containing a\n          saisies-powered form, most commonly created with the Formidable plugin.\n          Use the FORM_PAGE option to specify a known form page, or set it to\n          'crawl' to automatically discover one by following internal links from\n          the SPIP sitemap.\n\n          Versions 5.4.0 through 5.11.0 of the saisies plugin are affected.",
+    "references": [
+      "CVE-2025-71243",
+      "URL-https://blog.spip.net/Mise-a-jour-critique-de-securite-pour-le-plugin-Saisies.html",
+      "URL-https://plugins.spip.net/saisies"
+    ],
+    "platform": "Linux,PHP,Unix,Windows",
+    "arch": "php, cmd",
+    "rport": 80,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": [
+      "PHP In-Memory",
+      "Unix/Linux Command Shell",
+      "Windows Command Shell"
+    ],
+    "mod_time": "2026-03-05 14:13:05 +0000",
+    "path": "/modules/exploits/multi/http/spip_saisies_rce.rb",
+    "is_install_path": true,
+    "ref_name": "multi/http/spip_saisies_rce",
     "check": true,
     "post_auth": false,
     "default_credential": false,
@@ -120417,7 +120589,7 @@
       "Windows Universal",
       "Linux Universal"
     ],
-    "mod_time": "2026-02-26 17:25:03 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/struts_code_exec.rb",
     "is_install_path": true,
     "ref_name": "multi/http/struts_code_exec",
@@ -120549,7 +120721,7 @@
       "Linux Universal",
       "Java Universal"
     ],
-    "mod_time": "2026-02-26 17:25:03 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/struts_code_exec_exception_delegator.rb",
     "is_install_path": true,
     "ref_name": "multi/http/struts_code_exec_exception_delegator",
@@ -120676,7 +120848,7 @@
       "Windows",
       "Linux"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/struts_default_action_mapper.rb",
     "is_install_path": true,
     "ref_name": "multi/http/struts_default_action_mapper",
@@ -121853,7 +122025,7 @@
       "Total.js CMS on Linux",
       "Total.js CMS on Mac"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/totaljs_cms_widget_exec.rb",
     "is_install_path": true,
     "ref_name": "multi/http/totaljs_cms_widget_exec",
@@ -121972,7 +122144,7 @@
     "targets": [
       "Trend Micro Threat Discovery Appliance 2.6.1062r1"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/trendmicro_threat_discovery_admin_sys_time_cmdi.rb",
     "is_install_path": true,
     "ref_name": "multi/http/trendmicro_threat_discovery_admin_sys_time_cmdi",
@@ -123567,7 +123739,7 @@
     "targets": [
       "PHP"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/wondercms_rce.rb",
     "is_install_path": true,
     "ref_name": "multi/http/wondercms_rce",
@@ -124986,7 +125158,7 @@
     "targets": [
       "Automatic Target"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/http/wp_popular_posts_rce.rb",
     "is_install_path": true,
     "ref_name": "multi/http/wp_popular_posts_rce",
@@ -126313,7 +126485,7 @@
     "targets": [
       "Linux"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/iiop/cve_2023_21839_weblogic_rce.rb",
     "is_install_path": true,
     "ref_name": "multi/iiop/cve_2023_21839_weblogic_rce",
@@ -127176,7 +127348,7 @@
     "targets": [
       "Default"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/misc/cups_ipp_remote_code_execution.rb",
     "is_install_path": true,
     "ref_name": "multi/misc/cups_ipp_remote_code_execution",
@@ -127421,7 +127593,7 @@
       "Linux (Command)",
       "AIX (Command)"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/misc/ibm_tm1_unauth_rce.rb",
     "is_install_path": true,
     "ref_name": "multi/misc/ibm_tm1_unauth_rce",
@@ -130309,7 +130481,7 @@
       "Linux",
       "Windows Universal"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/multi/sap/sap_mgmt_con_osexec_payload.rb",
     "is_install_path": true,
     "ref_name": "multi/sap/sap_mgmt_con_osexec_payload",
@@ -131354,7 +131526,7 @@
       "Safari 5.1 on OS X",
       "Safari 5.1 on OS X with Java"
     ],
-    "mod_time": "2026-02-26 17:17:19 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/osx/browser/safari_file_policy.rb",
     "is_install_path": true,
     "ref_name": "osx/browser/safari_file_policy",
@@ -135711,7 +135883,7 @@
     "targets": [
       "Automatic Target"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/unix/http/pihole_blocklist_exec.rb",
     "is_install_path": true,
     "ref_name": "unix/http/pihole_blocklist_exec",
@@ -136347,7 +136519,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/unix/http/xdebug_unauth_exec.rb",
     "is_install_path": true,
     "ref_name": "unix/http/xdebug_unauth_exec",
@@ -136699,7 +136871,7 @@
     "targets": [
       "OpenSMTPD < 6.6.4 (automatic grammar selection)"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/unix/local/opensmtpd_oob_read_lpe.rb",
     "is_install_path": true,
     "ref_name": "unix/local/opensmtpd_oob_read_lpe",
@@ -139617,7 +139789,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/unix/webapp/google_proxystylesheet_exec.rb",
     "is_install_path": true,
     "ref_name": "unix/webapp/google_proxystylesheet_exec",
@@ -147213,7 +147385,7 @@
     "targets": [
       "Windows Universal"
     ],
-    "mod_time": "2026-02-26 17:25:03 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/antivirus/ams_xfr.rb",
     "is_install_path": true,
     "ref_name": "windows/antivirus/ams_xfr",
@@ -149328,7 +149500,7 @@
       "IE 6 on Windows XP SP3",
       "IE 7 on Windows XP SP3 / Vista"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/adobe_flash_sps.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/adobe_flash_sps",
@@ -149474,7 +149646,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/adobe_flashplayer_arrayindexing.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/adobe_flashplayer_arrayindexing",
@@ -150248,7 +150420,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/aol_icq_downloadagent.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/aol_icq_downloadagent",
@@ -150390,7 +150562,7 @@
       "Windows XP SP3 / Safari 5.1.7 / Apple QuickTime Player 7.7.2",
       "Windows XP SP3 / Safari 5.0.5 / Apple QuickTime Player 7.7.2"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/apple_quicktime_mime_type.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/apple_quicktime_mime_type",
@@ -150491,7 +150663,7 @@
       "Apple QuickTime Player 7.1.3",
       "Browser Universal"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/apple_quicktime_rtsp.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/apple_quicktime_rtsp",
@@ -150539,7 +150711,7 @@
     "targets": [
       "Apple QuickTime Player 7.6.6"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/apple_quicktime_smil_debug.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/apple_quicktime_smil_debug",
@@ -150589,7 +150761,7 @@
       "Firefox 3.5 on Windows XP SP3",
       "Firefox 3.5.1 on Windows XP SP3"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/apple_quicktime_texml_font_table.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/apple_quicktime_texml_font_table",
@@ -150909,7 +151081,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/awingsoft_winds3d_sceneurl.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/awingsoft_winds3d_sceneurl",
@@ -151050,7 +151222,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/blackice_downloadimagefileurl.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/blackice_downloadimagefileurl",
@@ -151096,7 +151268,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/c6_messenger_downloaderactivex.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/c6_messenger_downloaderactivex",
@@ -151428,7 +151600,7 @@
     "targets": [
       "Cisco WebEx Extension 1.0.1"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/cisco_webex_ext.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/cisco_webex_ext",
@@ -151766,7 +151938,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/dxstudio_player_exec.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/dxstudio_player_exec",
@@ -151900,7 +152072,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/enjoysapgui_comp_download.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/enjoysapgui_comp_download",
@@ -152134,7 +152306,7 @@
       "Automatic",
       "Windows 7 SP1 / Firefox 18 / Foxit Reader 5.4.4.11281"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/foxit_reader_plugin_url_bof.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/foxit_reader_plugin_url_bof",
@@ -152323,7 +152495,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/honeywell_hscremotedeploy_exec.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/honeywell_hscremotedeploy_exec",
@@ -153879,7 +154051,7 @@
       "Automatic",
       "Java Runtime on Windows x86"
     ],
-    "mod_time": "2026-03-02 11:11:59 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/java_ws_arginject_altjvm.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/java_ws_arginject_altjvm",
@@ -153927,7 +154099,7 @@
       "Automatic",
       "Java Runtime 1.6.31 to 1.6.35 and 1.7.03 to 1.7.07 on Windows x86"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/java_ws_double_quote.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/java_ws_double_quote",
@@ -153975,7 +154147,7 @@
       "Automatic",
       "Java Runtime on Windows x86"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/java_ws_vmargs.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/java_ws_vmargs",
@@ -154115,7 +154287,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/keyhelp_launchtripane_exec.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/keyhelp_launchtripane_exec",
@@ -154296,7 +154468,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/macrovision_unsafe.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/macrovision_unsafe",
@@ -155425,7 +155597,7 @@
       "Firefox on Windows XP (English)",
       "Firefox on Windows 2003 (English)"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/ms07_017_ani_loadimage_chunksize.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/ms07_017_ani_loadimage_chunksize",
@@ -155471,7 +155643,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/ms08_041_snapshotviewer.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/ms08_041_snapshotviewer",
@@ -156057,7 +156229,7 @@
       "Automatic",
       "Internet Explorer on Windows"
     ],
-    "mod_time": "2026-03-02 11:11:59 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/ms10_022_ie_vbscript_winhlp32.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/ms10_022_ie_vbscript_winhlp32",
@@ -156154,7 +156326,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/ms10_042_helpctr_xss_cmd_exec.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/ms10_042_helpctr_xss_cmd_exec",
@@ -156201,7 +156373,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-03-02 11:11:59 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/ms10_046_shortcut_icon_dllloader.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/ms10_046_shortcut_icon_dllloader",
@@ -157213,7 +157385,7 @@
       "Automatic",
       "Windows 10 with IE 11"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/ms16_051_vbscript.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/ms16_051_vbscript",
@@ -157260,7 +157432,7 @@
     "targets": [
       "Windows XP SP0-SP3 / IE 6.0 SP0-2 & IE 7.0"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/msvidctl_mpeg2.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/msvidctl_mpeg2",
@@ -157552,7 +157724,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/notes_handler_cmdinject.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/notes_handler_cmdinject",
@@ -158365,7 +158537,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/persits_xupload_traversal.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/persits_xupload_traversal",
@@ -158466,7 +158638,7 @@
     "targets": [
       "Windows Universal"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/real_arcade_installerdlg.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/real_arcade_installerdlg",
@@ -158793,7 +158965,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/safari_xslt_output.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/safari_xslt_output",
@@ -158886,7 +159058,7 @@
     "targets": [
       "Samsung Security Manager 1.32 & 1.4 Universal"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/samsung_security_manager_put.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/samsung_security_manager_put",
@@ -159119,7 +159291,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/symantec_altirisdeployment_downloadandinstall.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/symantec_altirisdeployment_downloadandinstall",
@@ -159208,7 +159380,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/symantec_appstream_unsafe.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/symantec_appstream_unsafe",
@@ -159397,7 +159569,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/systemrequirementslab_unsafe.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/systemrequirementslab_unsafe",
@@ -159685,7 +159857,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/ubisoft_uplay_cmd_exec.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/ubisoft_uplay_cmd_exec",
@@ -160022,7 +160194,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/webdav_dll_hijacker.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/webdav_dll_hijacker",
@@ -160587,7 +160759,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/zenturiprogramchecker_unsafe.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/zenturiprogramchecker_unsafe",
@@ -160635,7 +160807,7 @@
     "targets": [
       "Windows Universal"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/browser/zenworks_helplauncher_exec.rb",
     "is_install_path": true,
     "ref_name": "windows/browser/zenworks_helplauncher_exec",
@@ -160699,7 +160871,7 @@
     "targets": [
       "Windows"
     ],
-    "mod_time": "2026-02-18 17:08:51 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/dcerpc/cve_2021_1675_printnightmare.rb",
     "is_install_path": true,
     "ref_name": "windows/dcerpc/cve_2021_1675_printnightmare",
@@ -161036,7 +161208,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/email/ms10_045_outlook_ref_only.rb",
     "is_install_path": true,
     "ref_name": "windows/email/ms10_045_outlook_ref_only",
@@ -161093,7 +161265,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/email/ms10_045_outlook_ref_resolve.rb",
     "is_install_path": true,
     "ref_name": "windows/email/ms10_045_outlook_ref_resolve",
@@ -165938,7 +166110,7 @@
     "targets": [
       "Internet Explorer"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/fileformat/mcafee_showreport_exec.rb",
     "is_install_path": true,
     "ref_name": "windows/fileformat/mcafee_showreport_exec",
@@ -166809,7 +166981,7 @@
     "targets": [
       "Microsoft Office Word 2007/2010 on Windows 7"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/fileformat/ms12_005.rb",
     "is_install_path": true,
     "ref_name": "windows/fileformat/ms12_005",
@@ -167475,7 +167647,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/fileformat/nitro_reader_jsapi.rb",
     "is_install_path": true,
     "ref_name": "windows/fileformat/nitro_reader_jsapi",
@@ -167794,7 +167966,7 @@
     "targets": [
       "Microsoft Office Word"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/fileformat/office_word_hta.rb",
     "is_install_path": true,
     "ref_name": "windows/fileformat/office_word_hta",
@@ -168731,7 +168903,7 @@
     "targets": [
       "Windows"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/fileformat/theme_dll_hijack_cve_2023_38146.rb",
     "is_install_path": true,
     "ref_name": "windows/fileformat/theme_dll_hijack_cve_2023_38146",
@@ -170231,7 +170403,7 @@
     "targets": [
       "Microsoft Office Word"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/fileformat/word_msdtjs_rce.rb",
     "is_install_path": true,
     "ref_name": "windows/fileformat/word_msdtjs_rce",
@@ -170286,7 +170458,7 @@
     "targets": [
       "Hosted"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/fileformat/word_mshtml_rce.rb",
     "is_install_path": true,
     "ref_name": "windows/fileformat/word_mshtml_rce",
@@ -170931,7 +171103,7 @@
     "targets": [
       "Windows XP Pro SP3 English"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/ftp/ayukov_nftp.rb",
     "is_install_path": true,
     "ref_name": "windows/ftp/ayukov_nftp",
@@ -171561,7 +171733,7 @@
     "targets": [
       "FreeFloat"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/ftp/freefloatftp_wbem.rb",
     "is_install_path": true,
     "ref_name": "windows/ftp/freefloatftp_wbem",
@@ -171850,7 +172022,7 @@
     "targets": [
       "Windows Universal"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/ftp/ftpshell_cli_bof.rb",
     "is_install_path": true,
     "ref_name": "windows/ftp/ftpshell_cli_bof",
@@ -172192,7 +172364,7 @@
     "targets": [
       "Windows Universal"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/ftp/labf_nfsaxe.rb",
     "is_install_path": true,
     "ref_name": "windows/ftp/labf_nfsaxe",
@@ -172493,7 +172665,7 @@
     "targets": [
       "Open&Compact FTP 1.2 on Windows (Before Vista)"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/ftp/open_ftpd_wbem.rb",
     "is_install_path": true,
     "ref_name": "windows/ftp/open_ftpd_wbem",
@@ -172799,7 +172971,7 @@
     "targets": [
       "QuickShare File Server 1.2.1"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/ftp/quickshare_traversal_write.rb",
     "is_install_path": true,
     "ref_name": "windows/ftp/quickshare_traversal_write",
@@ -173060,7 +173232,7 @@
     "targets": [
       "Windows XP SP3 / Windows Vista"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/ftp/scriptftp_list.rb",
     "is_install_path": true,
     "ref_name": "windows/ftp/scriptftp_list",
@@ -175323,7 +175495,7 @@
     "targets": [
       "Windows Universal"
     ],
-    "mod_time": "2026-02-26 17:25:03 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/http/ca_totaldefense_regeneratereports.rb",
     "is_install_path": true,
     "ref_name": "windows/http/ca_totaldefense_regeneratereports",
@@ -175442,7 +175614,7 @@
     "targets": [
       "Cogent DataHub < 7.3.5"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/http/cogent_datahub_command.rb",
     "is_install_path": true,
     "ref_name": "windows/http/cogent_datahub_command",
@@ -181629,7 +181801,7 @@
     "targets": [
       "Windows Command"
     ],
-    "mod_time": "2026-02-26 17:27:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/http/manageengine_adaudit_plus_cve_2022_28219.rb",
     "is_install_path": true,
     "ref_name": "windows/http/manageengine_adaudit_plus_cve_2022_28219",
@@ -182858,7 +183030,7 @@
     "targets": [
       "Automatic Target"
     ],
-    "mod_time": "2026-02-26 17:43:32 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/http/northstar_c2_xss_to_agent_rce.rb",
     "is_install_path": true,
     "ref_name": "windows/http/northstar_c2_xss_to_agent_rce",
@@ -183636,7 +183808,7 @@
     "targets": [
       "Windows Universal"
     ],
-    "mod_time": "2026-02-26 17:25:03 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/http/osb_uname_jlist.rb",
     "is_install_path": true,
     "ref_name": "windows/http/osb_uname_jlist",
@@ -184574,7 +184746,7 @@
     "targets": [
       "SAP NetWeaver 7.02 SP6 / Windows with WebClient enabled"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/http/sap_host_control_cmd_exec.rb",
     "is_install_path": true,
     "ref_name": "windows/http/sap_host_control_cmd_exec",
@@ -185851,7 +186023,7 @@
     "targets": [
       "Windows Universal"
     ],
-    "mod_time": "2026-03-02 11:11:59 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/http/solarwinds_storage_manager_sql.rb",
     "is_install_path": true,
     "ref_name": "windows/http/solarwinds_storage_manager_sql",
@@ -187767,7 +187939,7 @@
       "Windows (Dropper)",
       "Windows (Command)"
     ],
-    "mod_time": "2026-02-26 17:25:03 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/iis/ms01_026_dbldecode.rb",
     "is_install_path": true,
     "ref_name": "windows/iis/ms01_026_dbldecode",
@@ -188053,7 +188225,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:25:03 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/iis/msadc.rb",
     "is_install_path": true,
     "ref_name": "windows/iis/msadc",
@@ -195732,7 +195904,7 @@
     "targets": [
       "Windows 2003 (with tftp client available)"
     ],
-    "mod_time": "2026-02-26 17:25:03 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/misc/altiris_ds_sqli.rb",
     "is_install_path": true,
     "ref_name": "windows/misc/altiris_ds_sqli",
@@ -197791,7 +197963,7 @@
     "targets": [
       "HP Data Protector 6.10/6.11/6.20 / Windows"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/misc/hp_dataprotector_install_service.rb",
     "is_install_path": true,
     "ref_name": "windows/misc/hp_dataprotector_install_service",
@@ -198820,7 +198992,7 @@
     "targets": [
       "IBM System Director Agent 5.20.3 / Windows with WebClient enabled"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/misc/ibm_director_cim_dllinject.rb",
     "is_install_path": true,
     "ref_name": "windows/misc/ibm_director_cim_dllinject",
@@ -199339,7 +199511,7 @@
       "Windows XP SP3 ENG",
       "Windows XP SP2 ENG"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/misc/mini_stream.rb",
     "is_install_path": true,
     "ref_name": "windows/misc/mini_stream",
@@ -199711,7 +199883,7 @@
     "targets": [
       "Windows x64"
     ],
-    "mod_time": "2026-02-26 17:27:09 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/misc/nvidia_mental_ray.rb",
     "is_install_path": true,
     "ref_name": "windows/misc/nvidia_mental_ray",
@@ -200748,7 +200920,7 @@
       "Windows x64",
       "Windows x86"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/misc/vmhgfs_webdav_dll_sideload.rb",
     "is_install_path": true,
     "ref_name": "windows/misc/vmhgfs_webdav_dll_sideload",
@@ -200790,7 +200962,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/misc/webdav_delivery.rb",
     "is_install_path": true,
     "ref_name": "windows/misc/webdav_delivery",
@@ -201560,7 +201732,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:25:03 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/mssql/mssql_payload.rb",
     "is_install_path": true,
     "ref_name": "windows/mssql/mssql_payload",
@@ -202141,7 +202313,7 @@
     "targets": [
       "Windows 2003 SP2 / NetIQ Privileged User Manager 2.3.1"
     ],
-    "mod_time": "2026-02-26 17:17:19 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/novell/netiq_pum_eval.rb",
     "is_install_path": true,
     "ref_name": "windows/novell/netiq_pum_eval",
@@ -204719,7 +204891,7 @@
     "targets": [
       "GE Proficy CIMPLICITY 7.5 (embedded CimWebServer)"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/scada/ge_proficy_cimplicity_gefebt.rb",
     "is_install_path": true,
     "ref_name": "windows/scada/ge_proficy_cimplicity_gefebt",
@@ -205605,7 +205777,7 @@
     "targets": [
       "Rockwell Automation FactoryTalk SE"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/scada/rockwell_factorytalk_rce.rb",
     "is_install_path": true,
     "ref_name": "windows/scada/rockwell_factorytalk_rce",
@@ -205655,7 +205827,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-02-26 17:39:08 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/exploits/windows/scada/scadapro_cmdexe.rb",
     "is_install_path": true,
     "ref_name": "windows/scada/scadapro_cmdexe",
@@ -225111,7 +225283,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2025-04-20 02:57:34 +0000",
+    "mod_time": "2026-02-25 09:25:25 +0000",
     "path": "/modules/payloads/singles/cmd/unix/bind_netcat.rb",
     "is_install_path": true,
     "ref_name": "cmd/unix/bind_netcat",
@@ -252683,7 +252855,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-02-20 18:46:18 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/payloads/stagers/java/bind_tcp.rb",
     "is_install_path": true,
     "ref_name": "java/meterpreter/bind_tcp",
@@ -252790,7 +252962,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-02-20 18:46:18 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/payloads/stagers/java/reverse_tcp.rb",
     "is_install_path": true,
     "ref_name": "java/meterpreter/reverse_tcp",
@@ -252824,7 +252996,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-02-20 18:46:18 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/payloads/stagers/java/bind_tcp.rb",
     "is_install_path": true,
     "ref_name": "java/shell/bind_tcp",
@@ -252858,7 +253030,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-02-20 18:46:18 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/payloads/stagers/java/reverse_tcp.rb",
     "is_install_path": true,
     "ref_name": "java/shell/reverse_tcp",
@@ -252892,7 +253064,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-02-20 18:46:18 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/payloads/singles/java/shell_reverse_tcp.rb",
     "is_install_path": true,
     "ref_name": "java/shell_reverse_tcp",
@@ -274095,7 +274267,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-02-26 17:12:49 +0000",
+    "mod_time": "2026-03-08 17:37:49 +0000",
     "path": "/modules/post/linux/busybox/set_dns.rb",
     "is_install_path": true,
     "ref_name": "linux/busybox/set_dns",

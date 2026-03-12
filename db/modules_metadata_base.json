@@ -24965,7 +24965,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2025-11-28 19:15:17 +0000",
+    "mod_time": "2026-03-11 16:36:35 +0000",
     "path": "/modules/auxiliary/gather/ldap_query.rb",
     "is_install_path": true,
     "ref_name": "gather/ldap_query",

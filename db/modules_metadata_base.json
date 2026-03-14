@@ -3725,7 +3725,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-10-06 17:15:11 +0000",
+    "mod_time": "2026-02-15 20:36:01 +0000",
     "path": "/modules/auxiliary/admin/http/linksys_wrt54gl_exec.rb",
     "is_install_path": true,
     "ref_name": "admin/http/linksys_wrt54gl_exec",
@@ -47948,7 +47948,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-07-16 22:59:48 +0000",
+    "mod_time": "2025-11-23 00:36:21 +0000",
     "path": "/modules/auxiliary/scanner/http/xorcom_completepbx_diagnostics_file_read.rb",
     "is_install_path": true,
     "ref_name": "scanner/http/xorcom_completepbx_diagnostics_file_read",
@@ -48004,7 +48004,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-07-16 22:59:48 +0000",
+    "mod_time": "2025-11-23 00:36:21 +0000",
     "path": "/modules/auxiliary/scanner/http/xorcom_completepbx_file_disclosure.rb",
     "is_install_path": true,
     "ref_name": "scanner/http/xorcom_completepbx_file_disclosure",
@@ -61367,7 +61367,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:50 +0000",
     "path": "/modules/auxiliary/server/capture/sip.rb",
     "is_install_path": true,
     "ref_name": "server/capture/sip",
@@ -61411,7 +61411,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2025-11-30 23:39:52 +0000",
+    "mod_time": "2026-02-15 20:36:50 +0000",
     "path": "/modules/auxiliary/server/capture/smb.rb",
     "is_install_path": true,
     "ref_name": "server/capture/smb",
@@ -61713,7 +61713,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:50 +0000",
     "path": "/modules/auxiliary/server/dns/spoofhelper.rb",
     "is_install_path": true,
     "ref_name": "server/dns/spoofhelper",
@@ -61756,7 +61756,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:50 +0000",
     "path": "/modules/auxiliary/server/fakedns.rb",
     "is_install_path": true,
     "ref_name": "server/fakedns",
@@ -61925,7 +61925,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:01 +0000",
     "path": "/modules/auxiliary/server/jsse_skiptls_mitm_proxy.rb",
     "is_install_path": true,
     "ref_name": "server/jsse_skiptls_mitm_proxy",
@@ -62099,7 +62099,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:50 +0000",
     "path": "/modules/auxiliary/server/netbios_spoof_nat.rb",
     "is_install_path": true,
     "ref_name": "server/netbios_spoof_nat",
@@ -62140,7 +62140,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:01 +0000",
     "path": "/modules/auxiliary/server/openssl_altchainsforgery_mitm_proxy.rb",
     "is_install_path": true,
     "ref_name": "server/openssl_altchainsforgery_mitm_proxy",
@@ -62223,7 +62223,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2025-06-20 13:20:44 +0000",
+    "mod_time": "2026-02-15 20:36:01 +0000",
     "path": "/modules/auxiliary/server/pxeexploit.rb",
     "is_install_path": true,
     "ref_name": "server/pxeexploit",
@@ -62622,7 +62622,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:50 +0000",
     "path": "/modules/auxiliary/server/tftp.rb",
     "is_install_path": true,
     "ref_name": "server/tftp",
@@ -63087,7 +63087,7 @@
       "dns"
     ],
     "targets": null,
-    "mod_time": "2025-05-13 19:36:21 +0000",
+    "mod_time": "2026-02-15 20:36:50 +0000",
     "path": "/modules/auxiliary/spoof/dns/native_spoofer.rb",
     "is_install_path": true,
     "ref_name": "spoof/dns/native_spoofer",
@@ -68341,7 +68341,7 @@
     "targets": [
       "NetScaler Virtual Appliance 450010"
     ],
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:50 +0000",
     "path": "/modules/exploits/freebsd/misc/citrix_netscaler_soap_bof.rb",
     "is_install_path": true,
     "ref_name": "freebsd/misc/citrix_netscaler_soap_bof",
@@ -70855,7 +70855,7 @@
       "Harsh Jaiswal",
       "Jonah Burgess (CryptoCat)"
     ],
-    "description": "This exploit achieves unauthenticated remote code execution against BeyondTrust Privileged Remote\n          Access (PRA) and Remote Support (RS). It leverages three different vulnerabilities depending on the\n          user-selected target.\n\n          The default target leverages CVE-2026-1731, a direct command injection affecting RS versions 25.3.1\n          and prior, and PRA versions 24.3.4 and prior.\n\n          Alternatively, the module can leverage a chain of CVE-2025-1094 (SQL injection in PostgreSQL)\n          and CVE-2024-12356 (argument injection), affecting RS and PRA versions 24.3.1 and prior.\n\n          Exploitation occurs with the privileges of the site user of the targeted BeyondTrust product site.",
+    "description": "This exploit achieves unauthenticated remote code execution against BeyondTrust Privileged Remote\n          Access (PRA) and Remote Support (RS). The module targets CVE-2026-1731, a direct command injection affecting RS versions 25.3.1 and prior, and PRA versions 24.3.4 and prior.\n          Exploitation occurs with the privileges of the site user of the targeted BeyondTrust product site.",
     "references": [
       "CVE-2026-1731",
       "URL-https://www.beyondtrust.com/trust-center/security-advisories/bt26-02",
@@ -70882,7 +70882,7 @@
     "targets": [
       "Command Injection"
     ],
-    "mod_time": "2026-02-24 16:16:05 +0000",
+    "mod_time": "2026-03-03 15:42:15 +0000",
     "path": "/modules/exploits/linux/http/beyondtrust_pra_rs_command_injection.rb",
     "is_install_path": true,
     "ref_name": "linux/http/beyondtrust_pra_rs_command_injection",
@@ -73988,7 +73988,7 @@
       "Dlink DIR-818 / 822 / 823 / 850 [MIPS]",
       "Dlink DIR-868 (rev. B and C) / 880 / 885 / 890 / 895 [ARM]"
     ],
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:01 +0000",
     "path": "/modules/exploits/linux/http/dlink_hnap_login_bof.rb",
     "is_install_path": true,
     "ref_name": "linux/http/dlink_hnap_login_bof",
@@ -77112,7 +77112,7 @@
     "targets": [
       "IBM QRadar SIEM <= 7.3.1 Patch 2 / 7.2.8 Patch 11"
     ],
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:01 +0000",
     "path": "/modules/exploits/linux/http/ibm_qradar_unauth_rce.rb",
     "is_install_path": true,
     "ref_name": "linux/http/ibm_qradar_unauth_rce",
@@ -80882,7 +80882,7 @@
     "targets": [
       "Nagios XI <= 5.5.6"
     ],
-    "mod_time": "2025-06-20 13:20:44 +0000",
+    "mod_time": "2026-02-15 20:36:01 +0000",
     "path": "/modules/exploits/linux/http/nagios_xi_magpie_debug.rb",
     "is_install_path": true,
     "ref_name": "linux/http/nagios_xi_magpie_debug",
@@ -89865,7 +89865,7 @@
     "targets": [
       "Unix/Linux Command Shell"
     ],
-    "mod_time": "2025-12-17 16:12:31 +0000",
+    "mod_time": "2025-11-23 00:36:21 +0000",
     "path": "/modules/exploits/linux/http/xorcom_completepbx_scheduler.rb",
     "is_install_path": true,
     "ref_name": "linux/http/xorcom_completepbx_scheduler",
@@ -96647,7 +96647,7 @@
     "targets": [
       "Jenkins 2.31"
     ],
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:50 +0000",
     "path": "/modules/exploits/linux/misc/jenkins_ldap_deserialize.rb",
     "is_install_path": true,
     "ref_name": "linux/misc/jenkins_ldap_deserialize",
@@ -111172,7 +111172,7 @@
       "Linux Universal",
       "Java Universal"
     ],
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:35 +0000",
     "path": "/modules/exploits/multi/http/jboss_maindeployer.rb",
     "is_install_path": true,
     "ref_name": "multi/http/jboss_maindeployer",
@@ -115627,7 +115627,7 @@
       "Linux/Unix (Interactive Shell)",
       "Windows (Interactive Shell)"
     ],
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:35 +0000",
     "path": "/modules/exploits/multi/http/oracle_ebs_cve_2025_61882_exploit_rce.rb",
     "is_install_path": true,
     "ref_name": "multi/http/oracle_ebs_cve_2025_61882_exploit_rce",
@@ -127348,7 +127348,7 @@
     "targets": [
       "Default"
     ],
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:50 +0000",
     "path": "/modules/exploits/multi/misc/cups_ipp_remote_code_execution.rb",
     "is_install_path": true,
     "ref_name": "multi/misc/cups_ipp_remote_code_execution",
@@ -135183,6 +135183,66 @@
     "path": "/modules/exploits/unix/http/freepbx_custom_extension_rce.rb",
     "is_install_path": true,
     "ref_name": "unix/http/freepbx_custom_extension_rce",
+    "check": true,
+    "post_auth": true,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "Reliability": [
+        "repeatable-session"
+      ],
+      "SideEffects": [
+        "artifacts-on-disk",
+        "ioc-in-logs"
+      ]
+    },
+    "session_types": false,
+    "needs_cleanup": null
+  },
+  "exploit_unix/http/freepbx_filestore_cmd_injection": {
+    "name": "FreePBX filestore authenticated command injection",
+    "fullname": "exploit/unix/http/freepbx_filestore_cmd_injection",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2025-11-08",
+    "type": "exploit",
+    "author": [
+      "Cory Billington",
+      "Valentin Lobstein <chocapikk@leakix.net>"
+    ],
+    "description": "This module exploits an authenticated command injection vulnerability (CVE-2025-64328) in the\n          FreePBX filestore module. The filestore module allows administrators to configure remote file\n          storage backends (SSH, FTP, etc.) for backup and file management purposes.\n\n          The vulnerability exists in the SSH driver's testconnection functionality, specifically in the\n          check_ssh_connect() function located at /admin/modules/filestore/drivers/SSH/testconnection.php.\n          The function accepts user-controlled input for the SSH key path parameter, which is then passed\n          unsanitized to exec() calls when generating SSH keys.\n\n          The vulnerable code executes commands such as:\n          exec(\"ssh-keygen -t ecdsa -b 521 -f $key -N \\\"\\\" && chown asterisk:asterisk $key && chmod 600 $key\");\n\n          By injecting shell command substitution syntax (e.g., $(command)) into the key parameter, an\n          authenticated user can execute arbitrary commands on the underlying system with the privileges of\n          the web server process (typically the asterisk user).\n\n          This vulnerability affects filestore module versions 17.0.2.36 through 17.0.2.44 (introduced in\n          17.0.2.36, patched in 17.0.3). The module requires valid FreePBX credentials for a user account that\n          has access to the filestore module. The user must be in the \"Filestore\" group (administrator or\n          low-privilege user).\n\n          Note: Due to the vulnerable code structure, the injected command may be executed multiple times,\n          potentially resulting in multiple Meterpreter sessions.",
+    "references": [
+      "CVE-2025-64328",
+      "GHSA-vm9p-46mv-5xvw",
+      "URL-https://theyhack.me/CVE-2025-64328-FreePBX-Authenticated-Command-Injection/"
+    ],
+    "platform": "Linux,Unix",
+    "arch": "cmd",
+    "rport": 80,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": [
+      "Unix Command"
+    ],
+    "mod_time": "2026-03-11 20:09:52 +0000",
+    "path": "/modules/exploits/unix/http/freepbx_filestore_cmd_injection.rb",
+    "is_install_path": true,
+    "ref_name": "unix/http/freepbx_filestore_cmd_injection",
     "check": true,
     "post_auth": true,
     "default_credential": false,
@@ -194427,7 +194487,7 @@
     "targets": [
       "Windows Universal"
     ],
-    "mod_time": "2025-06-20 13:20:44 +0000",
+    "mod_time": "2026-02-15 20:36:01 +0000",
     "path": "/modules/exploits/windows/local/pxeexploit.rb",
     "is_install_path": true,
     "ref_name": "windows/local/pxeexploit",
@@ -205777,7 +205837,7 @@
     "targets": [
       "Rockwell Automation FactoryTalk SE"
     ],
-    "mod_time": "2026-03-08 17:37:49 +0000",
+    "mod_time": "2026-02-15 20:36:01 +0000",
     "path": "/modules/exploits/windows/scada/rockwell_factorytalk_rce.rb",
     "is_install_path": true,
     "ref_name": "windows/scada/rockwell_factorytalk_rce",
@@ -278323,7 +278383,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2025-05-01 02:32:23 +0000",
+    "mod_time": "2026-03-10 11:07:19 +0000",
     "path": "/modules/post/multi/manage/autoroute.rb",
     "is_install_path": true,
     "ref_name": "multi/manage/autoroute",
@@ -289738,7 +289798,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2025-05-21 10:45:08 +0000",
+    "mod_time": "2026-02-15 20:36:01 +0000",
     "path": "/modules/post/windows/manage/pxeexploit.rb",
     "is_install_path": true,
     "ref_name": "windows/manage/pxeexploit",

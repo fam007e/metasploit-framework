@@ -40,7 +40,7 @@ group :development, :test do
   gem 'rspec-rails', '>= 8.0.3'
   gem 'rspec-rerun'
   # Required during CI as well local development
-  gem 'rubocop', '1.75.7'
+  gem 'rubocop', '1.75.8'
 end
 
 group :test do

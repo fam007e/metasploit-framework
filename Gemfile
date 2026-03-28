@@ -37,10 +37,10 @@ group :development, :test do
   gem 'rake'
   # Define `rake spec`.  Must be in development AND test so that its available by default as a rake test when the
   # environment is development
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>= 8.0.3'
   gem 'rspec-rerun'
   # Required during CI as well local development
-  gem 'rubocop', '1.75.7'
+  gem 'rubocop', '1.75.8'
 end
 
 group :test do

@@ -105,3 +105,5 @@ db/modules_metadata_base.pstore
 
 # gradle build files
 **/.gradle
+vendor/bundle/
+lib/msf/core/patches/

@@ -7309,7 +7309,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-06 10:38:56 +0000",
+    "mod_time": "2026-02-27 13:29:27 +0000",
     "path": "/modules/auxiliary/admin/ldap/rbcd.rb",
     "is_install_path": true,
     "ref_name": "admin/ldap/rbcd",
@@ -7369,7 +7369,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-02-09 22:52:31 +0000",
+    "mod_time": "2026-02-27 13:29:27 +0000",
     "path": "/modules/auxiliary/admin/ldap/shadow_credentials.rb",
     "is_install_path": true,
     "ref_name": "admin/ldap/shadow_credentials",
@@ -13233,7 +13233,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-05-04 23:26:52 +0000",
+    "mod_time": "2026-03-24 18:10:42 +0000",
     "path": "/modules/auxiliary/client/hwbridge/connect.rb",
     "is_install_path": true,
     "ref_name": "client/hwbridge/connect",
@@ -25012,7 +25012,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-03-17 12:03:10 +0000",
+    "mod_time": "2026-03-04 13:34:23 +0000",
     "path": "/modules/auxiliary/gather/ldap_esc_vulnerable_cert_finder.rb",
     "is_install_path": true,
     "ref_name": "gather/ldap_esc_vulnerable_cert_finder",
@@ -25065,7 +25065,7 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2025-09-08 17:30:59 +0000",
+    "mod_time": "2026-03-13 09:52:49 +0000",
     "path": "/modules/auxiliary/gather/ldap_passwords.rb",
     "is_install_path": true,
     "ref_name": "gather/ldap_passwords",
@@ -26565,6 +26565,64 @@
       ],
       "SideEffects": [
         "unknown-side-effects"
+      ]
+    },
+    "session_types": false,
+    "needs_cleanup": false,
+    "actions": []
+  },
+  "auxiliary_gather/osticket_arbitrary_file_read": {
+    "name": "osTicket Arbitrary File Read via PHP Filter Chains in mPDF",
+    "fullname": "auxiliary/gather/osticket_arbitrary_file_read",
+    "aliases": [],
+    "rank": 300,
+    "disclosure_date": "2026-01-13",
+    "type": "auxiliary",
+    "author": [
+      "HORIZON3.ai Team",
+      "Arkaprabha Chakraborty <@t1nt1nsn0wy>"
+    ],
+    "description": "This module exploits an arbitrary file read vulnerability in osTicket\n          (CVE-2026-22200). The vulnerability exists in osTicket's PDF export\n          functionality which uses mPDF. By injecting a specially crafted HTML payload\n          containing PHP filter chain URIs into a ticket reply, an attacker can read\n          arbitrary files from the server when the ticket is exported to PDF.\n\n          The PHP filter chain constructs a BMP image header that is prepended to the\n          target file contents. When mPDF renders the ticket as a PDF, it processes\n          the php://filter URI, reads the target file, and embeds it as a bitmap image\n          in the resulting PDF. The module then extracts the file contents from the PDF.\n\n          Authentication is required. The module supports both staff panel (/scp/) and\n          client portal login. An existing ticket number is also required.\n\n          Default files extracted are /etc/passwd and include/ost-config.php. The\n          osTicket config file contains database credentials and the SECRET_SALT value.",
+    "references": [
+      "CVE-2026-22200",
+      "URL-https://horizon3.ai/attack-research/attack-blogs/ticket-to-shell-exploiting-php-filters-and-cnext-in-osticket-cve-2026-22200",
+      "URL-https://github.com/horizon3ai/CVE-2026-22200/tree/main"
+    ],
+    "platform": "",
+    "arch": "",
+    "rport": 80,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": null,
+    "mod_time": "2026-03-28 01:55:44 +0000",
+    "path": "/modules/auxiliary/gather/osticket_arbitrary_file_read.rb",
+    "is_install_path": true,
+    "ref_name": "gather/osticket_arbitrary_file_read",
+    "check": true,
+    "post_auth": true,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "ioc-in-logs"
+      ],
+      "Reliability": [
+        "repeatable-session"
       ]
     },
     "session_types": false,
@@ -195125,54 +195183,6 @@
     "needs_cleanup": null,
     "actions": []
   },
-  "exploit_windows/local/s4u_persistence": {
-    "name": "Windows Manage User Level Persistent Payload Installer",
-    "fullname": "exploit/windows/local/s4u_persistence",
-    "aliases": [],
-    "rank": 600,
-    "disclosure_date": "2013-01-02",
-    "type": "exploit",
-    "author": [
-      "Thomas McCarthy \"smilingraccoon\" <smilingraccoon@gmail.com>",
-      "Brandon McCann \"zeknox\" <bmccann@accuvant.com>"
-    ],
-    "description": "Creates a scheduled task that will run using service-for-user (S4U).\n          This allows the scheduled task to run even as an unprivileged user\n          that is not logged into the device. This will result in lower security\n          context, allowing access to local resources only. The module\n          requires 'Logon as a batch job' permissions (SeBatchLogonRight).",
-    "references": [
-      "URL-http://www.pentestgeek.com/2013/02/11/scheduled-tasks-with-s4u-and-on-demand-persistence/",
-      "URL-http://www.scriptjunkie.us/2013/01/running-code-from-a-non-elevated-account-at-any-time/"
-    ],
-    "platform": "Windows",
-    "arch": "",
-    "rport": null,
-    "autofilter_ports": [],
-    "autofilter_services": [],
-    "targets": [
-      "Windows"
-    ],
-    "mod_time": "2025-06-23 12:43:46 +0000",
-    "path": "/modules/exploits/windows/local/s4u_persistence.rb",
-    "is_install_path": true,
-    "ref_name": "windows/local/s4u_persistence",
-    "check": false,
-    "post_auth": false,
-    "default_credential": false,
-    "notes": {
-      "Reliability": [
-        "unknown-reliability"
-      ],
-      "Stability": [
-        "unknown-stability"
-      ],
-      "SideEffects": [
-        "unknown-side-effects"
-      ]
-    },
-    "session_types": [
-      "meterpreter"
-    ],
-    "needs_cleanup": null,
-    "actions": []
-  },
   "exploit_windows/local/service_permissions": {
     "name": "Windows Escalate Service Permissions Local Privilege Escalation",
     "fullname": "exploit/windows/local/service_permissions",
@@ -203636,7 +203646,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-03-21 12:21:09 +0000",
+    "mod_time": "2026-02-17 16:32:34 +0000",
     "path": "/modules/exploits/windows/persistence/assistive_technology.rb",
     "is_install_path": true,
     "ref_name": "windows/persistence/assistive_technology",
@@ -203657,8 +203667,7 @@
       ]
     },
     "session_types": [
-      "meterpreter",
-      "shell"
+      "meterpreter"
     ],
     "needs_cleanup": null,
     "actions": []
@@ -204033,6 +204042,234 @@
     "needs_cleanup": null,
     "actions": []
   },
+  "exploit_windows/persistence/service_for_user/event": {
+    "name": "Windows Service for User (S4U) Scheduled Task Persistence - Event Trigger",
+    "fullname": "exploit/windows/persistence/service_for_user/event",
+    "aliases": [
+      "exploits/windows/local/s4u_persistence"
+    ],
+    "rank": 600,
+    "disclosure_date": "2013-01-02",
+    "type": "exploit",
+    "author": [
+      "Thomas McCarthy \"smilingraccoon\" <smilingraccoon@gmail.com>",
+      "Brandon McCann \"zeknox\" <bmccann@accuvant.com>",
+      "h00die"
+    ],
+    "description": "Creates a scheduled task that will run using service-for-user (S4U).\n          This allows the scheduled task to run even as an unprivileged user\n          that is not logged into the device. This will result in lower security\n          context, allowing access to local resources only. The module\n          requires 'Logon as a batch job' permissions (SeBatchLogonRight).\n\n          This variant uses an event trigger to launch the payload when a\n          specified event is logged to the Windows Event Log.\n\n          See documentation for more interesting event trigger ideas.",
+    "references": [
+      "URL-https://web.archive.org/web/20131103174249/https://www.pentestgeek.com/2013/02/11/scheduled-tasks-with-s4u-and-on-demand-persistence/",
+      "URL-https://web.archive.org/web/20250625082052/http://www.scriptjunkie.us/2013/01/running-code-from-a-non-elevated-account-at-any-time/",
+      "URL-https://web.archive.org/web/20131123075026/http://msdn.microsoft.com/en-us/magazine/cc188757.aspx",
+      "URL-https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx",
+      "ATT&CK-T1546",
+      "ATT&CK-T1053.005"
+    ],
+    "platform": "Windows",
+    "arch": "x64, x86, aarch64",
+    "rport": null,
+    "autofilter_ports": [],
+    "autofilter_services": [],
+    "targets": [
+      "Windows"
+    ],
+    "mod_time": "2026-01-11 07:43:43 +0000",
+    "path": "/modules/exploits/windows/persistence/service_for_user/event.rb",
+    "is_install_path": true,
+    "ref_name": "windows/persistence/service_for_user/event",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Reliability": [
+        "event-dependent",
+        "repeatable-session"
+      ],
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "ioc-in-logs",
+        "artifacts-on-disk",
+        "config-changes"
+      ]
+    },
+    "session_types": [
+      "meterpreter"
+    ],
+    "needs_cleanup": null,
+    "actions": []
+  },
+  "exploit_windows/persistence/service_for_user/lock_unlock": {
+    "name": "Windows Service for User (S4U) Scheduled Task Persistence - Logon Trigger",
+    "fullname": "exploit/windows/persistence/service_for_user/lock_unlock",
+    "aliases": [
+      "exploits/windows/local/s4u_persistence"
+    ],
+    "rank": 600,
+    "disclosure_date": "2013-01-02",
+    "type": "exploit",
+    "author": [
+      "Thomas McCarthy \"smilingraccoon\" <smilingraccoon@gmail.com>",
+      "Brandon McCann \"zeknox\" <bmccann@accuvant.com>",
+      "h00die"
+    ],
+    "description": "Creates a scheduled task that will run using service-for-user (S4U).\n          This allows the scheduled task to run even as an unprivileged user\n          that is not logged into the device. This will result in lower security\n          context, allowing access to local resources only. The module\n          requires 'Logon as a batch job' permissions (SeBatchLogonRight).\n\n          This triggers on either a lock or unlock of the workstation.",
+    "references": [
+      "URL-https://web.archive.org/web/20131103174249/https://www.pentestgeek.com/2013/02/11/scheduled-tasks-with-s4u-and-on-demand-persistence/",
+      "URL-https://web.archive.org/web/20250625082052/http://www.scriptjunkie.us/2013/01/running-code-from-a-non-elevated-account-at-any-time/",
+      "URL-https://web.archive.org/web/20131123075026/http://msdn.microsoft.com/en-us/magazine/cc188757.aspx",
+      "ATT&CK-T1546",
+      "ATT&CK-T1053.005"
+    ],
+    "platform": "Windows",
+    "arch": "x64, x86, aarch64",
+    "rport": null,
+    "autofilter_ports": [],
+    "autofilter_services": [],
+    "targets": [
+      "Windows"
+    ],
+    "mod_time": "2026-01-11 07:43:43 +0000",
+    "path": "/modules/exploits/windows/persistence/service_for_user/lock_unlock.rb",
+    "is_install_path": true,
+    "ref_name": "windows/persistence/service_for_user/lock_unlock",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Reliability": [
+        "event-dependent",
+        "repeatable-session"
+      ],
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "ioc-in-logs",
+        "artifacts-on-disk",
+        "config-changes"
+      ]
+    },
+    "session_types": [
+      "meterpreter"
+    ],
+    "needs_cleanup": null,
+    "actions": []
+  },
+  "exploit_windows/persistence/service_for_user/logon": {
+    "name": "Windows Service for User (S4U) Scheduled Task Persistence - Logon Trigger",
+    "fullname": "exploit/windows/persistence/service_for_user/logon",
+    "aliases": [
+      "exploits/windows/local/s4u_persistence"
+    ],
+    "rank": 600,
+    "disclosure_date": "2013-01-02",
+    "type": "exploit",
+    "author": [
+      "Thomas McCarthy \"smilingraccoon\" <smilingraccoon@gmail.com>",
+      "Brandon McCann \"zeknox\" <bmccann@accuvant.com>",
+      "h00die"
+    ],
+    "description": "Creates a scheduled task that will run using service-for-user (S4U).\n          This allows the scheduled task to run even as an unprivileged user\n          that is not logged into the device. This will result in lower security\n          context, allowing access to local resources only. The module\n          requires 'Logon as a batch job' permissions (SeBatchLogonRight).\n\n          This triggers on event 4101 which validates the Windows license after logon.",
+    "references": [
+      "URL-https://web.archive.org/web/20131103174249/https://www.pentestgeek.com/2013/02/11/scheduled-tasks-with-s4u-and-on-demand-persistence/",
+      "URL-https://web.archive.org/web/20250625082052/http://www.scriptjunkie.us/2013/01/running-code-from-a-non-elevated-account-at-any-time/",
+      "URL-https://web.archive.org/web/20131123075026/http://msdn.microsoft.com/en-us/magazine/cc188757.aspx",
+      "ATT&CK-T1546",
+      "ATT&CK-T1053.005"
+    ],
+    "platform": "Windows",
+    "arch": "x64, x86, aarch64",
+    "rport": null,
+    "autofilter_ports": [],
+    "autofilter_services": [],
+    "targets": [
+      "Windows"
+    ],
+    "mod_time": "2026-01-11 07:43:43 +0000",
+    "path": "/modules/exploits/windows/persistence/service_for_user/logon.rb",
+    "is_install_path": true,
+    "ref_name": "windows/persistence/service_for_user/logon",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Reliability": [
+        "event-dependent",
+        "repeatable-session"
+      ],
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "ioc-in-logs",
+        "artifacts-on-disk",
+        "config-changes"
+      ]
+    },
+    "session_types": [
+      "meterpreter"
+    ],
+    "needs_cleanup": null,
+    "actions": []
+  },
+  "exploit_windows/persistence/service_for_user/schedule": {
+    "name": "Windows Service for User (S4U) Scheduled Task Persistence - Schedule Trigger",
+    "fullname": "exploit/windows/persistence/service_for_user/schedule",
+    "aliases": [
+      "exploits/windows/local/s4u_persistence"
+    ],
+    "rank": 600,
+    "disclosure_date": "2013-01-02",
+    "type": "exploit",
+    "author": [
+      "Thomas McCarthy \"smilingraccoon\" <smilingraccoon@gmail.com>",
+      "Brandon McCann \"zeknox\" <bmccann@accuvant.com>",
+      "h00die"
+    ],
+    "description": "Creates a scheduled task that will run using service-for-user (S4U).\n          This allows the scheduled task to run even as an unprivileged user\n          that is not logged into the device. This will result in lower security\n          context, allowing access to local resources only. The module\n          requires 'Logon as a batch job' permissions (SeBatchLogonRight).\n\n          Creates a scheduled task to run the payload ever FREQUENCY minutes for\n          the duration of EXPIRE_TIME.",
+    "references": [
+      "URL-https://web.archive.org/web/20131103174249/https://www.pentestgeek.com/2013/02/11/scheduled-tasks-with-s4u-and-on-demand-persistence/",
+      "URL-https://web.archive.org/web/20250625082052/http://www.scriptjunkie.us/2013/01/running-code-from-a-non-elevated-account-at-any-time/",
+      "URL-https://web.archive.org/web/20131123075026/http://msdn.microsoft.com/en-us/magazine/cc188757.aspx",
+      "ATT&CK-T1053.005"
+    ],
+    "platform": "Windows",
+    "arch": "x64, x86, aarch64",
+    "rport": null,
+    "autofilter_ports": [],
+    "autofilter_services": [],
+    "targets": [
+      "Windows"
+    ],
+    "mod_time": "2025-12-27 07:33:15 +0000",
+    "path": "/modules/exploits/windows/persistence/service_for_user/schedule.rb",
+    "is_install_path": true,
+    "ref_name": "windows/persistence/service_for_user/schedule",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Reliability": [
+        "event-dependent",
+        "repeatable-session"
+      ],
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "ioc-in-logs",
+        "artifacts-on-disk",
+        "config-changes"
+      ]
+    },
+    "session_types": [
+      "meterpreter"
+    ],
+    "needs_cleanup": null,
+    "actions": []
+  },
   "exploit_windows/persistence/startup_folder": {
     "name": "Windows Persistent Startup Folder",
     "fullname": "exploit/windows/persistence/startup_folder",
@@ -204107,7 +204344,7 @@
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2026-03-21 12:21:09 +0000",
+    "mod_time": "2026-02-17 16:32:34 +0000",
     "path": "/modules/exploits/windows/persistence/task_scheduler.rb",
     "is_install_path": true,
     "ref_name": "windows/persistence/task_scheduler",
@@ -204128,8 +204365,57 @@
       ]
     },
     "session_types": [
-      "meterpreter",
-      "shell"
+      "meterpreter"
+    ],
+    "needs_cleanup": null,
+    "actions": []
+  },
+  "exploit_windows/persistence/telemetry": {
+    "name": "Windows Telemetry Persistence",
+    "fullname": "exploit/windows/persistence/telemetry",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2023-11-06",
+    "type": "exploit",
+    "author": [
+      "h00die"
+    ],
+    "description": "This persistence mechanism installs a new telemetry provider for windows. If telemetry is turned on,\n          when the scheduled task launches, it will execute the telemetry provider and execute our payload\n          with system permissions.",
+    "references": [
+      "ATT&CK-T1112",
+      "ATT&CK-T1546",
+      "URL-https://pentestlab.blog/2023/11/06/persistence-windows-telemetry/"
+    ],
+    "platform": "Windows",
+    "arch": "",
+    "rport": null,
+    "autofilter_ports": [],
+    "autofilter_services": [],
+    "targets": [
+      "Automatic"
+    ],
+    "mod_time": "2026-02-17 16:32:34 +0000",
+    "path": "/modules/exploits/windows/persistence/telemetry.rb",
+    "is_install_path": true,
+    "ref_name": "windows/persistence/telemetry",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Reliability": [
+        "event-dependent",
+        "repeatable-session"
+      ],
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "config-changes",
+        "ioc-in-logs"
+      ]
+    },
+    "session_types": [
+      "meterpreter"
     ],
     "needs_cleanup": null,
     "actions": []
@@ -227603,7 +227889,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2025-04-20 02:57:34 +0000",
+    "mod_time": "2026-04-09 15:08:23 +0000",
     "path": "/modules/payloads/singles/cmd/unix/reverse_bash.rb",
     "is_install_path": true,
     "ref_name": "cmd/unix/reverse_bash",
@@ -227666,7 +227952,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2025-04-20 02:57:34 +0000",
+    "mod_time": "2026-04-09 15:08:23 +0000",
     "path": "/modules/payloads/singles/cmd/unix/reverse_bash_udp.rb",
     "is_install_path": true,
     "ref_name": "cmd/unix/reverse_bash_udp",
@@ -283119,7 +283405,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/meterpreter_bind_named_pipe.rb",
     "is_install_path": true,
     "ref_name": "windows/meterpreter_bind_named_pipe",
@@ -283154,7 +283440,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/meterpreter_bind_tcp.rb",
     "is_install_path": true,
     "ref_name": "windows/meterpreter_bind_tcp",
@@ -283189,7 +283475,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/meterpreter_reverse_http.rb",
     "is_install_path": true,
     "ref_name": "windows/meterpreter_reverse_http",
@@ -283224,7 +283510,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/meterpreter_reverse_https.rb",
     "is_install_path": true,
     "ref_name": "windows/meterpreter_reverse_https",
@@ -283259,7 +283545,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/meterpreter_reverse_ipv6_tcp.rb",
     "is_install_path": true,
     "ref_name": "windows/meterpreter_reverse_ipv6_tcp",
@@ -283294,7 +283580,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/meterpreter_reverse_tcp.rb",
     "is_install_path": true,
     "ref_name": "windows/meterpreter_reverse_tcp",
@@ -289385,7 +289671,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/x64/meterpreter_bind_named_pipe.rb",
     "is_install_path": true,
     "ref_name": "windows/x64/meterpreter_bind_named_pipe",
@@ -289420,7 +289706,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/x64/meterpreter_bind_tcp.rb",
     "is_install_path": true,
     "ref_name": "windows/x64/meterpreter_bind_tcp",
@@ -289455,7 +289741,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/x64/meterpreter_reverse_http.rb",
     "is_install_path": true,
     "ref_name": "windows/x64/meterpreter_reverse_http",
@@ -289490,7 +289776,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/x64/meterpreter_reverse_https.rb",
     "is_install_path": true,
     "ref_name": "windows/x64/meterpreter_reverse_https",
@@ -289525,7 +289811,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/x64/meterpreter_reverse_ipv6_tcp.rb",
     "is_install_path": true,
     "ref_name": "windows/x64/meterpreter_reverse_ipv6_tcp",
@@ -289560,7 +289846,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-03-23 15:22:00 +0000",
+    "mod_time": "2026-04-06 13:47:12 +0000",
     "path": "/modules/payloads/singles/windows/x64/meterpreter_reverse_tcp.rb",
     "is_install_path": true,
     "ref_name": "windows/x64/meterpreter_reverse_tcp",

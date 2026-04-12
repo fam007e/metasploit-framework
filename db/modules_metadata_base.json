@@ -21071,6 +21071,61 @@
     "needs_cleanup": false,
     "actions": []
   },
+  "auxiliary_gather/avideo_catname_sqli": {
+    "name": "AVideo Unauthenticated SQL Injection Credential Dump",
+    "fullname": "auxiliary/gather/avideo_catname_sqli",
+    "aliases": [],
+    "rank": 300,
+    "disclosure_date": "2026-03-05",
+    "type": "auxiliary",
+    "author": [
+      "arkmarta",
+      "Valentin Lobstein <chocapikk@leakix.net>"
+    ],
+    "description": "AVideo <= 22.0 is vulnerable to unauthenticated SQL injection via the\n          catName parameter in objects/videos.json.php (CVE-2026-28501).\n\n          The security filter in security.php sanitizes GET/POST parameters but\n          does not cover JSON request bodies. Since videos.json.php parses JSON\n          input and merges it into $_REQUEST after the filter runs, a catName\n          value sent as JSON bypasses sanitization entirely and reaches\n          getCatSQL() unsanitized.\n\n          This module uses time-based blind injection with BENCHMARK() to dump\n          usernames and password hashes. SLEEP() is blocked by the sqlDAL\n          prepared statement layer, but BENCHMARK(N*(condition), SHA1(x)) works\n          because the condition is evaluated as a multiplier on the iteration\n          count, avoiding the subquery restrictions imposed by prepare().\n\n          Fixed in 24.0 (no 23.0 release exists).",
+    "references": [
+      "CVE-2026-28501",
+      "GHSA-pv87-r9qf-x56p"
+    ],
+    "platform": "",
+    "arch": "",
+    "rport": 80,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": null,
+    "mod_time": "2026-03-23 01:52:06 +0000",
+    "path": "/modules/auxiliary/gather/avideo_catname_sqli.rb",
+    "is_install_path": true,
+    "ref_name": "gather/avideo_catname_sqli",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "ioc-in-logs"
+      ],
+      "Reliability": []
+    },
+    "session_types": false,
+    "needs_cleanup": false,
+    "actions": []
+  },
   "auxiliary_gather/avtech744_dvr_accounts": {
     "name": "AVTECH 744 DVR Account Information Retrieval",
     "fullname": "auxiliary/gather/avtech744_dvr_accounts",
@@ -91109,14 +91164,14 @@
       "URL-https://bugzilla.redhat.com/show_bug.cgi?id=1266837"
     ],
     "platform": "Linux",
-    "arch": "x86, x64, armle, aarch64, ppc, mipsle, mipsbe",
+    "arch": "x86, x64, armle, aarch64, riscv64le, riscv32le, ppc, mipsle, mipsbe",
     "rport": null,
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": [
       "Auto"
     ],
-    "mod_time": "2025-06-23 12:43:46 +0000",
+    "mod_time": "2026-04-05 02:15:16 +0000",
     "path": "/modules/exploits/linux/local/abrt_sosreport_priv_esc.rb",
     "is_install_path": true,
     "ref_name": "linux/local/abrt_sosreport_priv_esc",
@@ -91386,14 +91441,14 @@
       "URL-https://github.com/bcoles/local-exploits/tree/master/asan-suid-root"
     ],
     "platform": "Linux",
-    "arch": "x86, x64, armle, aarch64, ppc, mipsle, mipsbe",
+    "arch": "x86, x64, armle, aarch64, riscv64le, riscv32le, ppc, mipsle, mipsbe",
     "rport": null,
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": [
       "Auto"
     ],
-    "mod_time": "2025-06-25 09:25:53 +0000",
+    "mod_time": "2026-04-05 02:15:16 +0000",
     "path": "/modules/exploits/linux/local/asan_suid_executable_priv_esc.rb",
     "is_install_path": true,
     "ref_name": "linux/local/asan_suid_executable_priv_esc",
@@ -91444,14 +91499,14 @@
       "URL-http://www.slackware.com/security/viewer.php?l=slackware-security&y=2015&m=slackware-security.421085"
     ],
     "platform": "Linux",
-    "arch": "x86, x64, armle, aarch64, ppc, mipsle, mipsbe",
+    "arch": "x86, x64, armle, aarch64, riscv64le, riscv32le, ppc, mipsle, mipsbe",
     "rport": null,
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": [
       "Auto"
     ],
-    "mod_time": "2025-06-23 12:43:46 +0000",
+    "mod_time": "2026-04-05 02:15:16 +0000",
     "path": "/modules/exploits/linux/local/blueman_set_dhcp_handler_dbus_priv_esc.rb",
     "is_install_path": true,
     "ref_name": "linux/local/blueman_set_dhcp_handler_dbus_priv_esc",
@@ -92203,14 +92258,14 @@
     "description": "This module obtains root privileges from any host account with access to the\n            Docker daemon. Usually this includes accounts in the `docker` group.",
     "references": [],
     "platform": "Linux",
-    "arch": "x86, x64, armle, mipsle, mipsbe",
+    "arch": "x86, x64, armle, riscv64le, riscv32le, mipsle, mipsbe",
     "rport": null,
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2025-06-23 12:43:46 +0000",
+    "mod_time": "2026-04-05 02:15:16 +0000",
     "path": "/modules/exploits/linux/local/docker_daemon_privilege_escalation.rb",
     "is_install_path": true,
     "ref_name": "linux/local/docker_daemon_privilege_escalation",
@@ -92252,14 +92307,14 @@
       "URL-https://github.com/stealthcopter/deepce"
     ],
     "platform": "Linux",
-    "arch": "x86, x64, armle, mipsle, mipsbe",
+    "arch": "x86, x64, armle, riscv64le, riscv32le, mipsle, mipsbe",
     "rport": null,
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": [
       "Automatic"
     ],
-    "mod_time": "2023-02-08 15:46:07 +0000",
+    "mod_time": "2026-04-05 02:15:16 +0000",
     "path": "/modules/exploits/linux/local/docker_privileged_container_escape.rb",
     "is_install_path": true,
     "ref_name": "linux/local/docker_privileged_container_escape",
@@ -93046,14 +93101,14 @@
       "URL-https://github.com/bcoles/local-exploits/blob/master/CVE-2011-2921/ktsuss-lpe.sh"
     ],
     "platform": "Linux",
-    "arch": "x86, x64, armle, aarch64, ppc, mipsle, mipsbe",
+    "arch": "x86, x64, armle, aarch64, riscv64le, riscv32le, ppc, mipsle, mipsbe",
     "rport": null,
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": [
       "Auto"
     ],
-    "mod_time": "2025-06-25 09:25:53 +0000",
+    "mod_time": "2026-04-05 02:15:16 +0000",
     "path": "/modules/exploits/linux/local/ktsuss_suid_priv_esc.rb",
     "is_install_path": true,
     "ref_name": "linux/local/ktsuss_suid_priv_esc",
@@ -93948,14 +94003,14 @@
       "URL-https://blog.gdssecurity.com/labs/2017/9/5/linux-based-inter-process-code-injection-without-ptrace2.html"
     ],
     "platform": "Linux",
-    "arch": "x86, x64, armle, aarch64, ppc, mipsle, mipsbe",
+    "arch": "x86, x64, armle, aarch64, riscv64le, riscv32le, ppc, mipsle, mipsbe",
     "rport": null,
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": [
       "Auto"
     ],
-    "mod_time": "2025-06-23 12:43:46 +0000",
+    "mod_time": "2026-04-05 02:15:16 +0000",
     "path": "/modules/exploits/linux/local/ptrace_sudo_token_priv_esc.rb",
     "is_install_path": true,
     "ref_name": "linux/local/ptrace_sudo_token_priv_esc",
@@ -94437,14 +94492,14 @@
       "URL-http://web.archive.org/web/20250208173448/https://support.solarwinds.com/SuccessCenter/s/article/Serv-U-Potential-elevation-of-privileges-on-Linux-systems"
     ],
     "platform": "Linux",
-    "arch": "x86, x64, armle, aarch64, ppc, mipsle, mipsbe",
+    "arch": "x86, x64, armle, aarch64, riscv64le, riscv32le, ppc, mipsle, mipsbe",
     "rport": null,
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": [
       "Auto"
     ],
-    "mod_time": "2025-06-25 09:25:53 +0000",
+    "mod_time": "2026-04-05 02:15:16 +0000",
     "path": "/modules/exploits/linux/local/servu_ftp_server_prepareinstallation_priv_esc.rb",
     "is_install_path": true,
     "ref_name": "linux/local/servu_ftp_server_prepareinstallation_priv_esc",
@@ -94837,14 +94892,14 @@
       "URL-https://www.debian.org/security/2011/dsa-2348"
     ],
     "platform": "Linux",
-    "arch": "x86, x64, armle, aarch64, ppc, mipsle, mipsbe",
+    "arch": "x86, x64, armle, aarch64, riscv64le, riscv32le, ppc, mipsle, mipsbe",
     "rport": null,
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": [
       "Auto"
     ],
-    "mod_time": "2025-02-28 09:35:28 +0000",
+    "mod_time": "2026-04-05 02:15:16 +0000",
     "path": "/modules/exploits/linux/local/systemtap_modprobe_options_priv_esc.rb",
     "is_install_path": true,
     "ref_name": "linux/local/systemtap_modprobe_options_priv_esc",

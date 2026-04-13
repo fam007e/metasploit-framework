@@ -217033,7 +217033,7 @@
       "Brendan Watters",
       "Spencer McIntyre",
       "Geyslan G. Bem <geyslan@gmail.com>",
-      "Aleh Boitsau <infosecurity@ya.ru>"
+      "Aleh B"
     ],
     "description": "Fetch and execute a x86 payload from an HTTP server.\n\n          Listen for a connection in a random port and spawn a command shell.\n          Use nmap to discover the open port: 'nmap -sS target -p-'.",
     "references": [
@@ -221360,7 +221360,7 @@
       "Brendan Watters",
       "Spencer McIntyre",
       "Geyslan G. Bem <geyslan@gmail.com>",
-      "Aleh Boitsau <infosecurity@ya.ru>"
+      "Aleh B"
     ],
     "description": "Fetch and execute an x86 payload from an HTTPS server.\n\n          Listen for a connection in a random port and spawn a command shell.\n          Use nmap to discover the open port: 'nmap -sS target -p-'.",
     "references": [
@@ -225687,7 +225687,7 @@
       "Brendan Watters",
       "Spencer McIntyre",
       "Geyslan G. Bem <geyslan@gmail.com>",
-      "Aleh Boitsau <infosecurity@ya.ru>"
+      "Aleh B"
     ],
     "description": "Fetch and execute a x86 payload from a TFTP server.\n\n          Listen for a connection in a random port and spawn a command shell.\n          Use nmap to discover the open port: 'nmap -sS target -p-'.",
     "references": [
@@ -275172,7 +275172,7 @@
     "type": "payload",
     "author": [
       "Geyslan G. Bem <geyslan@gmail.com>",
-      "Aleh Boitsau <infosecurity@ya.ru>"
+      "Aleh B"
     ],
     "description": "Listen for a connection in a random port and spawn a command shell.\n          Use nmap to discover the open port: 'nmap -sS target -p-'.",
     "references": [
@@ -275185,7 +275185,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2025-04-20 02:57:34 +0000",
+    "mod_time": "2026-04-12 21:12:33 +0000",
     "path": "/modules/payloads/singles/linux/x86/shell_bind_tcp_random_port.rb",
     "is_install_path": true,
     "ref_name": "linux/x86/shell_bind_tcp_random_port",

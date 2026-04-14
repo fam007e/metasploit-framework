@@ -725,7 +725,7 @@
       "microsoft-ds"
     ],
     "targets": null,
-    "mod_time": "2026-02-09 23:03:01 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/admin/dcerpc/cve_2020_1472_zerologon.rb",
     "is_install_path": true,
     "ref_name": "admin/dcerpc/cve_2020_1472_zerologon",
@@ -789,7 +789,7 @@
       "microsoft-ds"
     ],
     "targets": null,
-    "mod_time": "2025-06-04 11:22:26 +0000",
+    "mod_time": "2026-04-07 13:27:23 +0000",
     "path": "/modules/auxiliary/admin/dcerpc/cve_2022_26923_certifried.rb",
     "is_install_path": true,
     "ref_name": "admin/dcerpc/cve_2022_26923_certifried",
@@ -860,7 +860,7 @@
       "microsoft-ds"
     ],
     "targets": null,
-    "mod_time": "2026-02-07 10:12:36 +0000",
+    "mod_time": "2026-04-07 13:27:23 +0000",
     "path": "/modules/auxiliary/admin/dcerpc/esc_update_ldap_object.rb",
     "is_install_path": true,
     "ref_name": "admin/dcerpc/esc_update_ldap_object",
@@ -922,7 +922,7 @@
       "microsoft-ds"
     ],
     "targets": null,
-    "mod_time": "2026-02-07 10:12:36 +0000",
+    "mod_time": "2026-04-07 13:27:23 +0000",
     "path": "/modules/auxiliary/admin/dcerpc/icpr_cert.rb",
     "is_install_path": true,
     "ref_name": "admin/dcerpc/icpr_cert",
@@ -2441,7 +2441,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-11-21 12:22:25 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/admin/http/fortinet_fortiweb_create_admin.rb",
     "is_install_path": true,
     "ref_name": "admin/http/fortinet_fortiweb_create_admin",
@@ -2901,7 +2901,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-06-23 19:38:36 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/admin/http/idsecure_auth_bypass.rb",
     "is_install_path": true,
     "ref_name": "admin/http/idsecure_auth_bypass",
@@ -5997,7 +5997,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2026-04-06 13:12:47 +0000",
+    "mod_time": "2026-04-08 17:07:00 +0000",
     "path": "/modules/auxiliary/admin/http/web_enrollment_cert.rb",
     "is_install_path": true,
     "ref_name": "admin/http/web_enrollment_cert",
@@ -6157,7 +6157,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-06-23 19:38:36 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/admin/http/whatsup_gold_sqli.rb",
     "is_install_path": true,
     "ref_name": "admin/http/whatsup_gold_sqli",
@@ -10941,7 +10941,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-06-23 19:38:36 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/admin/scada/mypro_mgr_creds.rb",
     "is_install_path": true,
     "ref_name": "admin/scada/mypro_mgr_creds",
@@ -23340,7 +23340,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2023-06-06 16:24:38 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/gather/gitlab_authenticated_subgroups_file_read.rb",
     "is_install_path": true,
     "ref_name": "gather/gitlab_authenticated_subgroups_file_read",
@@ -23579,7 +23579,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-03-20 13:09:17 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/gather/glpi_inventory_plugin_unauth_sqli.rb",
     "is_install_path": true,
     "ref_name": "gather/glpi_inventory_plugin_unauth_sqli",
@@ -25496,7 +25496,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2026-03-12 14:18:57 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/gather/magento_xxe_cve_2024_34102.rb",
     "is_install_path": true,
     "ref_name": "gather/magento_xxe_cve_2024_34102",
@@ -26550,7 +26550,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2026-02-09 15:17:23 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/gather/onedev_arbitrary_file_read.rb",
     "is_install_path": true,
     "ref_name": "gather/onedev_arbitrary_file_read",
@@ -26780,7 +26780,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-06-23 19:38:36 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/gather/pacsserver_traversal.rb",
     "is_install_path": true,
     "ref_name": "gather/pacsserver_traversal",
@@ -28305,7 +28305,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-06-23 19:38:36 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/gather/solarwinds_webhelpdesk_backdoor.rb",
     "is_install_path": true,
     "ref_name": "gather/solarwinds_webhelpdesk_backdoor",
@@ -28764,7 +28764,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-06-23 19:38:36 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/gather/upsmon_traversal.rb",
     "is_install_path": true,
     "ref_name": "gather/upsmon_traversal",
@@ -35697,7 +35697,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2023-09-01 20:14:41 +0000",
+    "mod_time": "2026-04-10 16:13:38 +0000",
     "path": "/modules/auxiliary/scanner/http/elasticsearch_memory_disclosure.rb",
     "is_install_path": true,
     "ref_name": "scanner/http/elasticsearch_memory_disclosure",
@@ -62582,7 +62582,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2026-04-06 15:27:28 +0000",
+    "mod_time": "2026-04-07 16:07:31 +0000",
     "path": "/modules/auxiliary/server/relay/esc8.rb",
     "is_install_path": true,
     "ref_name": "server/relay/esc8",
@@ -107281,16 +107281,17 @@
     "needs_cleanup": null
   },
   "exploit_multi/http/churchcrm_install_unauth_rce": {
-    "name": "ChurchCRM Unauthenticated RCE 6.8.0",
+    "name": "ChurchCRM Unauthenticated RCE via Setup Page",
     "fullname": "exploit/multi/http/churchcrm_install_unauth_rce",
     "aliases": [],
-    "rank": 300,
+    "rank": 600,
     "disclosure_date": "2025-12-17",
     "type": "exploit",
     "author": [
+      "Arthur Valverde (uartu0)",
       "LucasCsmt"
     ],
-    "description": "This module exploits an unauthenticated remote code execution\n          vulnerability in the installation process of ChurchCRM versions\n          6.8.0 and earlier. By sending a specially crafted POST request to\n          the 'setup' page, an attacker can execute arbitrary commands on the\n          target server. This module uploads a meterpreter payload to the\n          target server and executes it, allowing for remote code execution.",
+    "description": "ChurchCRM <= 6.8.0 allows unauthenticated remote code execution via\n          the setup page. The DB_PASSWORD field in the installation form is written\n          directly into Include/Config.php without sanitization, allowing PHP code\n          injection. The injected config file is then included on every request,\n          triggering the payload. Note that the fix claimed in 5.21.0 only added\n          a strlen check on the password field, leaving the injection intact.",
     "references": [
       "GHSA-m8jq-j3p9-2xf3",
       "CVE-2025-62521"
@@ -107316,9 +107317,9 @@
     "targets": [
       "Linux/unix Command (CmdStager)",
       "PHP (In-Memory)",
-      "PHP (fetch)"
+      "PHP (Fetch)"
     ],
-    "mod_time": "2026-02-13 14:42:07 +0000",
+    "mod_time": "2026-03-07 03:59:42 +0000",
     "path": "/modules/exploits/multi/http/churchcrm_install_unauth_rce.rb",
     "is_install_path": true,
     "ref_name": "multi/http/churchcrm_install_unauth_rce",
@@ -217033,7 +217034,7 @@
       "Brendan Watters",
       "Spencer McIntyre",
       "Geyslan G. Bem <geyslan@gmail.com>",
-      "Aleh B"
+      "3AleXM8B40"
     ],
     "description": "Fetch and execute a x86 payload from an HTTP server.\n\n          Listen for a connection in a random port and spawn a command shell.\n          Use nmap to discover the open port: 'nmap -sS target -p-'.",
     "references": [
@@ -221360,7 +221361,7 @@
       "Brendan Watters",
       "Spencer McIntyre",
       "Geyslan G. Bem <geyslan@gmail.com>",
-      "Aleh B"
+      "3AleXM8B40"
     ],
     "description": "Fetch and execute an x86 payload from an HTTPS server.\n\n          Listen for a connection in a random port and spawn a command shell.\n          Use nmap to discover the open port: 'nmap -sS target -p-'.",
     "references": [
@@ -225687,7 +225688,7 @@
       "Brendan Watters",
       "Spencer McIntyre",
       "Geyslan G. Bem <geyslan@gmail.com>",
-      "Aleh B"
+      "3AleXM8B40"
     ],
     "description": "Fetch and execute a x86 payload from a TFTP server.\n\n          Listen for a connection in a random port and spawn a command shell.\n          Use nmap to discover the open port: 'nmap -sS target -p-'.",
     "references": [
@@ -275172,7 +275173,7 @@
     "type": "payload",
     "author": [
       "Geyslan G. Bem <geyslan@gmail.com>",
-      "Aleh B"
+      "3AleXM8B40"
     ],
     "description": "Listen for a connection in a random port and spawn a command shell.\n          Use nmap to discover the open port: 'nmap -sS target -p-'.",
     "references": [
@@ -275185,7 +275186,7 @@
     "autofilter_ports": null,
     "autofilter_services": null,
     "targets": null,
-    "mod_time": "2026-04-12 21:12:33 +0000",
+    "mod_time": "2026-04-13 16:10:37 +0000",
     "path": "/modules/payloads/singles/linux/x86/shell_bind_tcp_random_port.rb",
     "is_install_path": true,
     "ref_name": "linux/x86/shell_bind_tcp_random_port",

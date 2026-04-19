@@ -177,7 +177,7 @@ module Msf::ModuleManager::Cache
       reference_name = module_metadata.ref_name
 
       # Skip cached modules that are not in our allowed load paths
-      next if allowed_paths.select{|x| path.index(x) == 0}.empty?
+      next unless allowed_paths.any? { |x| path.start_with?(x) }
 
       parent_path = get_parent_path(path, type)
 

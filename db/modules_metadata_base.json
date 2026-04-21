@@ -15225,11 +15225,11 @@
     "autofilter_ports": [],
     "autofilter_services": [],
     "targets": null,
-    "mod_time": "2026-04-15 11:57:01 +0000",
+    "mod_time": "2026-04-20 14:22:23 +0000",
     "path": "/modules/auxiliary/dos/http/nodejs_pipelining.rb",
     "is_install_path": true,
     "ref_name": "dos/http/nodejs_pipelining",
-    "check": true,
+    "check": false,
     "post_auth": false,
     "default_credential": false,
     "notes": {
@@ -38365,7 +38365,7 @@
     "author": [
       "hdm <x@hdm.io>"
     ],
-    "description": "This module attempts to authenticate to an HTTP service.",
+    "description": "This module attempts to authenticate to HTTP services that\n        require Basic, Digest, or WebDAV authentication.\n        It will probe URIs to identify endpoints requiring authentication (HTTP 401)\n        and then perform brute-force login attempts.",
     "references": [
       "CVE-1999-0502"
     ],
@@ -38390,7 +38390,7 @@
       "https"
     ],
     "targets": null,
-    "mod_time": "2025-11-18 16:42:59 +0000",
+    "mod_time": "2026-04-16 22:05:06 +0000",
     "path": "/modules/auxiliary/scanner/http/http_login.rb",
     "is_install_path": true,
     "ref_name": "scanner/http/http_login",
@@ -124088,6 +124088,66 @@
     "session_types": false,
     "needs_cleanup": null
   },
+  "exploit_multi/http/webdav_upload_php": {
+    "name": "WebDAV PHP Upload",
+    "fullname": "exploit/multi/http/webdav_upload_php",
+    "aliases": [
+      "exploits/windows/http/xampp_webdav_upload_php"
+    ],
+    "rank": 600,
+    "disclosure_date": "2012-01-14",
+    "type": "exploit",
+    "author": [
+      "theLightCosine <theLightCosine@metasploit.com>",
+      "g0tmi1k"
+    ],
+    "description": "This module exploits WebDAV which also has PHP enabled,\n          such as found on XAMPP servers.\n          It can use do by using any supplied credentials to upload via WebDAV,\n          a PHP payload and then execute it.",
+    "references": [
+      "CVE-2012-10062"
+    ],
+    "platform": "PHP",
+    "arch": "php",
+    "rport": 80,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": [
+      "Automatic"
+    ],
+    "mod_time": "2026-04-16 22:05:06 +0000",
+    "path": "/modules/exploits/multi/http/webdav_upload_php.rb",
+    "is_install_path": true,
+    "ref_name": "multi/http/webdav_upload_php",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "SideEffects": [
+        "artifacts-on-disk",
+        "ioc-in-logs"
+      ],
+      "Reliability": [
+        "repeatable-session"
+      ]
+    },
+    "session_types": false,
+    "needs_cleanup": true
+  },
   "exploit_multi/http/weblogic_admin_handle_rce": {
     "name": "Oracle WebLogic Server Administration Console Handle RCE",
     "fullname": "exploit/multi/http/weblogic_admin_handle_rce",
@@ -188129,63 +188189,6 @@
       "SideEffects": [
         "ioc-in-logs",
         "screen-effects"
-      ]
-    },
-    "session_types": false,
-    "needs_cleanup": null
-  },
-  "exploit_windows/http/xampp_webdav_upload_php": {
-    "name": "XAMPP WebDAV PHP Upload",
-    "fullname": "exploit/windows/http/xampp_webdav_upload_php",
-    "aliases": [],
-    "rank": 600,
-    "disclosure_date": "2012-01-14",
-    "type": "exploit",
-    "author": [
-      "theLightCosine <theLightCosine@metasploit.com>"
-    ],
-    "description": "This module exploits weak WebDAV passwords on XAMPP servers.\n          It uses supplied credentials to upload a PHP payload and\n          execute it.",
-    "references": [
-      "CVE-2012-10062"
-    ],
-    "platform": "PHP",
-    "arch": "php",
-    "rport": 80,
-    "autofilter_ports": [
-      80,
-      8080,
-      443,
-      8000,
-      8888,
-      8880,
-      8008,
-      3000,
-      8443
-    ],
-    "autofilter_services": [
-      "http",
-      "https"
-    ],
-    "targets": [
-      "Automatic"
-    ],
-    "mod_time": "2025-10-06 17:15:11 +0000",
-    "path": "/modules/exploits/windows/http/xampp_webdav_upload_php.rb",
-    "is_install_path": true,
-    "ref_name": "windows/http/xampp_webdav_upload_php",
-    "check": false,
-    "post_auth": true,
-    "default_credential": false,
-    "notes": {
-      "Stability": [
-        "crash-safe"
-      ],
-      "SideEffects": [
-        "artifacts-on-disk",
-        "ioc-in-logs"
-      ],
-      "Reliability": [
-        "repeatable-session"
       ]
     },
     "session_types": false,

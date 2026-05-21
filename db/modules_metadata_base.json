@@ -41567,6 +41567,57 @@
     "needs_cleanup": false,
     "actions": []
   },
+  "auxiliary_scanner/http/ollama_info": {
+    "name": "Ollama Scanner",
+    "fullname": "auxiliary/scanner/http/ollama_info",
+    "aliases": [],
+    "rank": 300,
+    "disclosure_date": null,
+    "type": "auxiliary",
+    "author": [
+      "h00die"
+    ],
+    "description": "This module identifies ollama instances and enumerates the LLM\n          models which have been loaded and are running.",
+    "references": [
+      "URL-https://ollama.readthedocs.io/en/api/"
+    ],
+    "platform": "",
+    "arch": "",
+    "rport": 11434,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": null,
+    "mod_time": "2026-05-07 12:00:25 +0000",
+    "path": "/modules/auxiliary/scanner/http/ollama_info.rb",
+    "is_install_path": true,
+    "ref_name": "scanner/http/ollama_info",
+    "check": false,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "Reliability": [],
+      "SideEffects": []
+    },
+    "session_types": false,
+    "needs_cleanup": false,
+    "actions": []
+  },
   "auxiliary_scanner/http/onion_omega2_login": {
     "name": "Onion Omega2 Login Brute-Force",
     "fullname": "auxiliary/scanner/http/onion_omega2_login",
@@ -92538,6 +92589,105 @@
     "needs_cleanup": null,
     "actions": []
   },
+  "exploit_linux/local/cve_2026_43284_dirty_frag": {
+    "name": "xfrm-ESP Page-Cache Write via CVE-2026-43284",
+    "fullname": "exploit/linux/local/cve_2026_43284_dirty_frag",
+    "aliases": [],
+    "rank": 400,
+    "disclosure_date": "2026-05-08",
+    "type": "exploit",
+    "author": [
+      "Hyunwoo Kim",
+      "Giovanni Heward"
+    ],
+    "description": "CVE-2026-43284 is a Linux kernel page-cache write vulnerability in the IPsec/xfrm\n          subsystem affecting ESP (Encapsulating Security Payload) fragmentation. Dubbed\n          \"DirtyFrag\", the bug allows a local unprivileged user to gain write access to read-only\n          page-cache pages by triggering a race condition in how the kernel handles shared fragments\n          when processing ESP-encapsulated UDP packets. The exploit overwrites a SUID binary on disk\n          to execute an arbitrary payload as root.",
+    "references": [
+      "CVE-2026-43284",
+      "URL-https://github.com/V4bel/dirtyfrag"
+    ],
+    "platform": "Linux,Unix",
+    "arch": "cmd",
+    "rport": null,
+    "autofilter_ports": [],
+    "autofilter_services": [],
+    "targets": [
+      "Auto"
+    ],
+    "mod_time": "2026-05-21 11:49:08 +0000",
+    "path": "/modules/exploits/linux/local/cve_2026_43284_dirty_frag.rb",
+    "is_install_path": true,
+    "ref_name": "linux/local/cve_2026_43284_dirty_frag",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Reliability": [
+        "repeatable-session"
+      ],
+      "Stability": [
+        "crash-os-down"
+      ],
+      "SideEffects": [
+        "artifacts-on-disk",
+        "config-changes"
+      ]
+    },
+    "session_types": [
+      "shell",
+      "meterpreter"
+    ],
+    "needs_cleanup": true,
+    "actions": []
+  },
+  "exploit_linux/local/cve_2026_43500_dirty_frag": {
+    "name": "rxkad Page-Cache Write via CVE-2026-43500",
+    "fullname": "exploit/linux/local/cve_2026_43500_dirty_frag",
+    "aliases": [],
+    "rank": 400,
+    "disclosure_date": "2026-05-08",
+    "type": "exploit",
+    "author": [
+      "Hyunwoo Kim",
+      "Giovanni Heward"
+    ],
+    "description": "CVE-2026-43500 exploits a memory-corruption vulnerability in the Linux kernel's RxRPC\n          authentication subsystem (rxkad). When a crafted DATA packet is delivered to an AF_RXRPC\n          socket configured with an attacker-controlled rxkad session key, the kernel's\n          rxkad_verify_packet_1() function performs an in-place 8-byte pcbc(fcrypt) decryption\n          directly on the page-cache page referenced by the splice offset. Because the decryption\n          mutates the page in-place without marking it dirty, the corrupted in-memory view is\n          immediately visible to all processes reading from the page cache. This allows a local\n          attacker to corrupt the in-memory contents of a SUID binary and escalate privileges to root.",
+    "references": [
+      "CVE-2026-43500",
+      "URL-https://github.com/V4bel/dirtyfrag"
+    ],
+    "platform": "Linux,Unix",
+    "arch": "cmd",
+    "rport": null,
+    "autofilter_ports": [],
+    "autofilter_services": [],
+    "targets": [
+      "Auto"
+    ],
+    "mod_time": "2026-05-21 11:49:08 +0000",
+    "path": "/modules/exploits/linux/local/cve_2026_43500_dirty_frag.rb",
+    "is_install_path": true,
+    "ref_name": "linux/local/cve_2026_43500_dirty_frag",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Reliability": [
+        "repeatable-session"
+      ],
+      "Stability": [
+        "crash-os-down"
+      ],
+      "SideEffects": [
+        "artifacts-on-disk"
+      ]
+    },
+    "session_types": [
+      "shell",
+      "meterpreter"
+    ],
+    "needs_cleanup": true,
+    "actions": []
+  },
   "exploit_linux/local/desktop_privilege_escalation": {
     "name": "Desktop Linux Password Stealer and Privilege Escalation",
     "fullname": "exploit/linux/local/desktop_privilege_escalation",
@@ -109310,6 +109460,70 @@
     },
     "session_types": false,
     "needs_cleanup": null
+  },
+  "exploit_multi/http/dompdf_rce_cve_2022_28368": {
+    "name": "Dompdf RCE via Malicious Font Caching (CVE-2022-28368)",
+    "fullname": "exploit/multi/http/dompdf_rce_cve_2022_28368",
+    "aliases": [],
+    "rank": 600,
+    "disclosure_date": "2022-04-05",
+    "type": "exploit",
+    "author": [
+      "Maximilian Kirchmeier",
+      "Fabian Bräunlein",
+      "rvizx",
+      "msutovsky-r7",
+      "Adithya Pawar"
+    ],
+    "description": "This module exploits CVE-2022-28368, a Remote Code Execution vulnerability\n          in dompdf versions prior to 1.2.1. The vulnerability exists because dompdf\n          preserves the original file extension when caching fonts downloaded via CSS\n          @font-face rules. By pointing a @font-face src to a .php file containing a\n          valid TrueType font header with embedded PHP code, the file is saved in the\n          dompdf font cache (lib/fonts/) with its .php extension intact. The cached\n          file can then be executed by directly requesting it from the web server.\n\n          For dompdf versions <= 0.8.5, remote font loading works regardless of the\n          $isRemoteEnabled setting. For versions 0.8.6 through 1.2.0, the\n          $isRemoteEnabled option must be set to true.\n\n          This module requires the ability to inject HTML/CSS into the data processed\n          by dompdf (e.g., via an XSS, a user-controlled form field, or a direct\n          parameter) and that the dompdf font cache directory is web-accessible.",
+    "references": [
+      "CVE-2022-28368",
+      "GHSA-56gj-mvh6-rp75",
+      "URL-https://positive.security/blog/dompdf-rce",
+      "URL-https://github.com/rvizx/CVE-2022-28368"
+    ],
+    "platform": "PHP",
+    "arch": "php",
+    "rport": 80,
+    "autofilter_ports": [
+      80,
+      8080,
+      443,
+      8000,
+      8888,
+      8880,
+      8008,
+      3000,
+      8443
+    ],
+    "autofilter_services": [
+      "http",
+      "https"
+    ],
+    "targets": [
+      "PHP"
+    ],
+    "mod_time": "2026-05-20 15:50:16 +0000",
+    "path": "/modules/exploits/multi/http/dompdf_rce_cve_2022_28368.rb",
+    "is_install_path": true,
+    "ref_name": "multi/http/dompdf_rce_cve_2022_28368",
+    "check": true,
+    "post_auth": false,
+    "default_credential": false,
+    "notes": {
+      "Stability": [
+        "crash-safe"
+      ],
+      "Reliability": [
+        "repeatable-session"
+      ],
+      "SideEffects": [
+        "artifacts-on-disk",
+        "ioc-in-logs"
+      ]
+    },
+    "session_types": false,
+    "needs_cleanup": true
   },
   "exploit_multi/http/dotcms_file_upload_rce": {
     "name": "DotCMS RCE via Arbitrary File Upload.",

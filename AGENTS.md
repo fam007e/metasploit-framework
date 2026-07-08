@@ -42,7 +42,7 @@ Metasploit Framework is an open-source penetration testing and exploitation fram
 - License new code with `MSF_LICENSE` (the project default, defined in `lib/msf/core/constants.rb`)
 - When overriding `cleanup`, always call `super` to ensure the parent mixin chain cleans up connections and sessions properly
 - When possible don't set a default payload (`DefaultOptions` with `'PAYLOAD'`) in modules — let the framework choose the most appropriate payload automatically
-- New modules require an associated markdown file in the `documentation/modules` folder with the same structure, including steps to set up the vulnerable environment for testing. NEVER add content into the Scenarios section, this must be filled out by a human at all times. Follow `documentation/modules/module_doc_template.md` as a template.
+- New modules require an associated markdown file in the `documentation/modules` folder with the same structure, including steps to set up the vulnerable environment for testing. The Scenarios section must be filled out by a human at all times. Follow `documentation/modules/module_doc_template.md` as a template.
 - Module descriptions or documentation should list the range of vulnerable versions and the fixed version of the affected software, when known
 - Module descriptions should only use ASCII characters
 - `report_service` method called when a service can be reported
@@ -73,6 +73,7 @@ Metasploit Framework is an open-source penetration testing and exploitation fram
 - `get_version` methods should return a REX version
 - `CheckCode::Vulnerable` is only used when the vulnerability has been exploited
 - `CheckCode::Appears`  is only used when the application's versions has been checked`
+- Always provide a human-readable reason string when returning a CheckCode, e.g. `CheckCode::Safe("Target is running patched version #{version}")` — never return a bare constant or empty call
 - Use specific regular expressions or `res.get_html_document` for version extraction with CSS selectors. Don't use a generic selectors like `href .*` dot star to grab the version, be more precise.
 - Do catch exceptions that may be raised and ensure a valid Check Code is returned
 - Do research and determine a minimum version where the application is vulnerable, mark prior versions as safe
